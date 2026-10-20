@@ -276,6 +276,38 @@ footer{border-top:1px solid var(--line);margin-top:20px;padding:26px 0}
   .cta-box{padding:28px 24px}
   .cta-r{margin-left:0}
 }
+
+/* ---- 图谱画布：加大面积 ---- */
+#net{height:690px}
+@media(max-width:1100px){#net{height:575px}}
+@media(max-width:760px){#net{height:440px}}
+
+/* ---- 领域全览（横向滑动） ---- */
+.ov{margin-top:30px}
+.ov-hd{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;
+  margin-bottom:12px;font-family:var(--mono);font-size:11px;letter-spacing:1.8px;color:var(--tx-4)}
+.ov-hd b{color:var(--tx-2);font-weight:600}
+.ov-hd em{font-style:normal;color:var(--neon);opacity:.9}
+.ov-track{display:flex;gap:12px;overflow-x:auto;overflow-y:hidden;padding:6px 4px 18px;
+  scroll-snap-type:x proximity;scrollbar-width:thin;scrollbar-color:#2A3543 transparent}
+.ov-track::-webkit-scrollbar{height:7px}
+.ov-track::-webkit-scrollbar-track{background:transparent}
+.ov-track::-webkit-scrollbar-thumb{background:#2A3543;border-radius:4px}
+.ov-track::-webkit-scrollbar-thumb:hover{background:#3A4757}
+.ov-c{flex:0 0 132px;scroll-snap-align:start;border:1px solid var(--line);border-radius:14px;
+  background:var(--surface);padding:12px;cursor:pointer;user-select:none;
+  transition:transform .3s var(--ease),border-color .3s,background .3s}
+.ov-c:hover{transform:translateY(-4px);border-color:currentColor;background:var(--surface-2)}
+.ov-c.on{border-color:currentColor;background:var(--surface-2)}
+.ov-i{width:108px;height:108px;border-radius:11px;overflow:hidden;margin-bottom:10px;
+  background:#0A1018;border:1px solid var(--line);display:grid;place-items:center}
+.ov-i img,.ov-i canvas{width:100%;height:100%;display:block;object-fit:cover}
+.ov-t{font-size:12.5px;font-weight:600;color:var(--tx-1);line-height:1.35;letter-spacing:.2px}
+.ov-e{font-family:var(--mono);font-size:9px;letter-spacing:1px;color:var(--tx-4);margin-top:4px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ov-o{display:inline-block;font-family:var(--mono);font-size:9.5px;letter-spacing:.6px;color:var(--tx-3);
+  margin-top:8px;border-radius:5px;padding:3px 7px;background:var(--bg-2);border:1px solid var(--line)}
+@media(max-width:760px){.ov-c{flex:0 0 118px;padding:10px}.ov-i{width:96px;height:96px}}
 </style>
 </head>
 <body>
@@ -309,7 +341,7 @@ footer{border-top:1px solid var(--line);margin-top:20px;padding:26px 0}
         现在做的事：找需求在涨、供给还没跟上的方向，自己定义产品，推到货架上。</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#timeline"><span>看七年历程</span><span class="mono">↓</span></a>
-        <a class="btn" href="#network"><span>看领域图谱</span><span class="mono">100</span></a>
+        <a class="btn" href="#network"><span>看领域图谱</span><span class="mono">72</span></a>
       </div>
     </div>
     <aside class="hero-side">
@@ -326,7 +358,7 @@ footer{border-top:1px solid var(--line);margin-top:20px;padding:26px 0}
       <div class="stat" data-rv><div class="stat-v" data-num="7">0</div><div class="stat-t">从业年限</div><div class="stat-s">WORK YEARS</div></div>
       <div class="stat" data-rv data-rv-d="1"><div class="stat-v" data-num="100" data-suffix="+">0</div><div class="stat-t">近一年落地新品</div><div class="stat-s">PRODUCTS SHIPPED</div></div>
       <div class="stat" data-rv data-rv-d="2"><div class="stat-v" data-num="7000" data-suffix="W">0</div><div class="stat-t">年销售额</div><div class="stat-s">ANNUAL GMV</div></div>
-      <div class="stat" data-rv data-rv-d="3"><div class="stat-v" data-num="100" data-suffix="+">0</div><div class="stat-t">涉足细分领域</div><div class="stat-s">DOMAINS TOUCHED</div></div>
+      <div class="stat" data-rv data-rv-d="3"><div class="stat-v" data-num="72" data-suffix="">0</div><div class="stat-t">涉足细分领域</div><div class="stat-s">DOMAINS TOUCHED</div></div>
     </div>
   </div>
 </section>
@@ -339,7 +371,7 @@ footer{border-top:1px solid var(--line);margin-top:20px;padding:26px 0}
     <div class="eyebrow" data-rv>01 / 历程 TIMELINE</div>
     <h2 data-rv>七年，五家公司，两条赛道</h2>
     <p class="sub" data-rv>前四年在山东和北京做设计，后三年在深圳做产品。
-      中间有一次被裁，一次上高原，和一次彻底的身份切换。</p>
+      中间有一次行业调整带来的重新选择，一次高原上的沉淀，和一次彻底的身份切换——每一次都把路走宽了一截。</p>
 
     <div class="tl" id="tl">
       <div class="tl-axis"><i id="tlfill"></i></div>
@@ -376,13 +408,13 @@ footer{border-top:1px solid var(--line);margin-top:20px;padding:26px 0}
     <div class="net-head">
       <div>
         <div class="eyebrow" data-rv>03 / 图谱 NETWORK</div>
-        <h2 data-rv data-rv-d="1">近 100 个细分领域，长成了一张网</h2>
+        <h2 data-rv data-rv-d="1">72 个细分领域，长成了一张网</h2>
         <p class="sub" data-rv data-rv-d="2">从医疗仪器到气保焊机，从泳池机器人到宠物电推剪。
-          点任意节点看这一支是怎么接上的。</p>
+          每个圆点里都有一张该领域的参考图——点开看这一支是怎么接上的，也可以拖到下面横向翻完全部 72 个。</p>
       </div>
       <div class="net-stat" data-rv data-rv-d="3" style="text-align:right;font-family:var(--mono)">
         <div style="font-family:var(--geo);font-size:44px;font-weight:800;color:var(--neon);letter-spacing:-1.5px;line-height:1">
-          <span data-num="100">0</span>
+          <span data-num="72">0</span>
         </div>
         <div style="font-size:11px;letter-spacing:2.4px;color:var(--tx-4);margin-top:8px">DOMAINS</div>
       </div>
@@ -396,7 +428,15 @@ footer{border-top:1px solid var(--line);margin-top:20px;padding:26px 0}
     <div class="legend" id="legend"></div>
 
     <div class="panel empty" id="panel">
-      点击左侧任意节点，查看这个领域的涉足脉络
+      点击上方任意节点，查看这个领域的涉足脉络
+    </div>
+
+    <div class="ov">
+      <div class="ov-hd">
+        <span>领域全览 · <b id="ovcount">72</b> 个细分领域</span>
+        <em>← 横向滑动 / 拖拽浏览 →</em>
+      </div>
+      <div class="ov-track" id="ovtrack"></div>
     </div>
   </div>
 </section>
@@ -501,7 +541,7 @@ const TIMELINE = [
     year:"2015", phase:"起点 · 山东",
     org:"山东理工大学 · 工业设计（本科）",
     meta:"2015.09 — 2019.06 · 山东淄博",
-    text:"村里从小是<strong>「学习的标杆」</strong>，一路进到尖子班。大学里当口语社社长，过了 CET-6。专业是当年在信息差下选的——「不知道报什么」——这件事后来被他反复提起，成了他<strong>「信息差 / 落后感」叙事</strong>的起点。软件全靠 B 站自学，从那时起就<strong>酷爱快捷键，还自己编键位</strong>。",
+    text:"从小喜欢琢磨东西是怎么造出来的，填志愿时一眼认准了<strong>工业设计</strong>——能把想法做成看得见、摸得着的实物，这件事本身就让人着迷。村里从小是<strong>「学习的标杆」</strong>，一路进到尖子班。大学里当<strong>口语社社长</strong>，过了 CET-6。软件全靠 B 站自学，从那时起就<strong>酷爱快捷键，还自己编键位</strong>。",
     tags:["工业设计本科","自学软件","口语社社长","CET-6"],
     shots:[["cover","ID / MD / PM 三重身份概念"]]
   },
@@ -509,7 +549,7 @@ const TIMELINE = [
     year:"2019", phase:"入行 · 山东",
     org:"山东朗云工业设计有限责任公司 · ID 设计师（兼结构）",
     meta:"2019.05 — 2020.10 · 山东淄博",
-    text:"山东头部独立工业设计公司，团队七八十人，年设计产值 2000 余万，<strong>自建加工车间与 3D 打印设备</strong>，特色是「前端做深」——从应用场景、市场分析一路做到结构、仿真、样机测试。头一年就扎进<strong>医疗设备、商用厨具钣金、工程机械</strong>三条线：糖尿病耦合仪、血糖分析仪、蒸饭柜、通风柜、环氧类设备。完整走「草图 → 建模 → 渲染 → 结构落地与图纸输出」，工具是 SolidWorks 与 Keyshot。生活这边：月薪三四千到四五千，<strong>第一次拿到工资买了台整机电脑——不敢自己组装，怕弄坏</strong>。",
+    text:"山东头部独立工业设计公司，团队七八十人，年设计产值 2000 余万，<strong>自建加工车间与 3D 打印设备</strong>，特色是「前端做深」——从应用场景、市场分析一路做到结构、仿真、样机测试。头一年就扎进<strong>医疗设备、商用厨具钣金、工程机械</strong>三条线：糖尿病耦合仪、血糖分析仪、蒸饭柜、通风柜、环氧类设备。完整走「草图 → 建模 → 渲染 → 结构落地与图纸输出」，工具是 SolidWorks 与 Keyshot。<strong>第一笔工资就配了台整机</strong>，从此渲染、3D 打印、刀路都在自己机器上跑通——工具这件事，他从入行第一天就舍得投入。",
     tags:["医疗设备","商用厨具/钣金","工程机械","消费电子","近百项外观"],
     shots:[["pol_b","钣金结构与图纸输出"],["noz_b","零件级工程建模"]]
   },
@@ -542,7 +582,7 @@ const TIMELINE = [
     year:"2023", phase:"南下 · 转甲方",
     org:"深圳市一品时代科技有限公司 · 硬件产品经理（B 端 / Amazon）",
     meta:"2023.05 — 2024.07 · 深圳",
-    text:"关键心态转折：<strong>「做乙方不行，处处受限，做甲方比较好」</strong>——从乙方到甲方的身份自觉。同年定下一件大事：<strong>给妈养老需要钱，赚钱必须在深圳</strong>。工作落在环境电器工厂端全流程——前期规划、产品调研、竞品分析、出 PRD，然后<strong>过外观与结构评审、推模具进度、解决试产和量产里的问题</strong>；同时带新员工、回大客户技术问题、协助 Amazon 线上宣发。代表项目是<strong>除湿机（干衣款）开发</strong>：要跟竞品拉开差异、找到独特卖点，同时把盈亏平衡点压下去；内部磋商挖痛点 + 海外人群画像 → 输出《市场调研分析报告》→ 进入生产和预售。",
+    text:"关键心态转折：<strong>与其在乙方等需求，不如到甲方自己定义需求</strong>——从设计执行走向产品决策。同年认定一件事：做跨境产品，深圳是供应链与制造资源最密的地方，<strong>必须到现场去</strong>，于是南下。工作落在环境电器工厂端全流程——前期规划、产品调研、竞品分析、出 PRD，然后<strong>过外观与结构评审、推模具进度、解决试产和量产里的问题</strong>；同时带新员工、回大客户技术问题、协助 Amazon 线上宣发。代表项目是<strong>除湿机（干衣款）开发</strong>：要跟竞品拉开差异、找到独特卖点，同时把盈亏平衡点压下去；内部磋商挖痛点 + 海外人群画像 → 输出《市场调研分析报告》→ 进入生产和预售。",
     tags:["硬件 PM","工厂端全流程","PRD","推模具/试产量产","除湿机干衣款"],
     shots:[["dehum_a","便携家用除湿机 · 整机"],["dehum_b","除湿机 · 外观与功能"],["dehum_c","除湿机 · CMF 方案"]],
     kpi:[["30%","除湿机线销售额提升"],["30,000+","B 端年销量"]]
@@ -560,7 +600,7 @@ const TIMELINE = [
     year:"2025", phase:"断流与转向",
     org:"被裁 → 318 川藏线 → 深圳市海思拓普科技",
     meta:"2025.09 — 2025.11 · 深圳",
-    text:"9 月，行云<strong>整个电商部门裁撤</strong>，被动离职。9–10 月走了趟 <strong>318 川藏线</strong>——三位同事同行，路上并不算愉快：两位性格强势，一路打压。 <em>「离职后出走一趟再回来」</em>是他的一贯模式，前一次是罗浮山。11 月入职<strong>海思拓普</strong>（260 人，年营业额约 10 亿），任产品开发经理：负责<strong>清洁、户外、工具、大健康</strong>四个类目的产品开发与新市场拓展；同时<strong>协助搭建公司 AI 流程、培训 AI 使用方式，推动全员数字化和 AI 化</strong>。一年内<strong>近 100 款产品落地、Amazon 10 余款上架</strong>，年采购额 2000W、年销售额 7000W。这一年证书也收口了：<strong>NPDP · PMP · 注册质量工程师 · 铣工高级技师</strong>。",
+    text:"9 月，行云<strong>电商部门整体裁撤</strong>。他把这两个月当成难得的窗口期：一边复盘三年跨境打法，一边走了趟<strong>318 川藏线</strong>——喜欢在长路上把思路走顺，这是他一直保有节奏感的方式。11 月入职<strong>海思拓普</strong>（260 人，年营业额约 10 亿），任产品开发经理：负责<strong>清洁、户外、工具、大健康</strong>四个类目的产品开发与新市场拓展；同时<strong>协助搭建公司 AI 流程、培训 AI 使用方式，推动全员数字化和 AI 化</strong>。一年内<strong>近 100 款产品落地、Amazon 10 余款上架</strong>，年采购额 2000W、年销售额 7000W。这一年证书也收口了：<strong>NPDP · PMP · 注册质量工程师 · 铣工高级技师</strong>。",
     tags:["清洁","户外","工具","大健康","AI 流程搭建","近100款落地"],
     shots:[["work_a","现公司产品线"],["work_b","自建工作站 / ComfyUI"]],
     kpi:[["100+","一年落地款数"],["7000W","年销售额"]]
@@ -569,7 +609,7 @@ const TIMELINE = [
     year:"2026", phase:"现在",
     org:"深圳市海思拓普科技有限公司 · 新产品开发经理",
     meta:"2025.11 — 至今 · 深圳 · 在职看新机会",
-    text:"28 岁。做的事很明确：<strong>找需求在涨、供给还没跟上的方向，自己定义产品，推到货架上</strong>。定价不是拍脑袋——用逐项拆解的利润表算到盈亏平衡点。<strong>「外观是最后一道，不是第一道。先确认能量产，再谈好不好看。」</strong> 自我定价：月薪至少 2 万，理由是<strong>每月能给公司带来 200 万收益</strong>。终局画面已经想清楚了：<strong>做出业绩之后就不必留在深圳，旅居、边玩边工作，或者回老家自己盖房子</strong>——深圳是攒资本的地方，不是终点。还有一个藏着的想法：将来想当<strong>「开新赛道的老师」</strong>，在跨境 × AI 的交叉处做知识输出，而不是去当旧赛道里卷来卷去的那种老师。",
+    text:"28 岁。做的事很明确：<strong>找需求在涨、供给还没跟上的方向，自己定义产品，推到货架上</strong>。定价不是拍脑袋——用逐项拆解的利润表算到盈亏平衡点。<strong>「外观是最后一道，不是第一道。先确认能量产，再谈好不好看。」</strong> 判断标准只有一条：<strong>这件事能不能形成复利</strong>。接下来想把七年踩过的坑整理成可复用的方法，同时把公司的 AI 流程继续做深，让选品、测算、打样判断这些环节被工具放大。长期想做的是<strong>「开新赛道的老师」</strong>——在跨境 × AI 的交叉处做知识输出，而不是在旧赛道里卷。",
     tags:["新产品开发","Amazon","TikTok Shop","UK / DE","AI 增效"],
     shots:[["cover","ID / MD / PM · 现在的位置"],["work_b","自建水冷工作站"]]
   }
@@ -594,120 +634,183 @@ const CLUSTERS = [
 
 /* 每项：[中文名, 英文名, 大类ID, 组织/阶段, 一句话说明, 代表项目图key] */
 const DOMAINS = [
-  // A 环境电器 / 气候 —— 10
-  ["除湿机","Dehumidifier","A","一品 · 行云","干衣款开发；除湿机业务线销售额 +30%，B 端年销 30,000+","dehum_a"],
-  ["加湿除湿一体机","Hybrid Humidifier-Dehumidifier","A","一品","拆机自研，客单价 $35，B 端年销 20,000+","dehum_b"],
-  ["空气循环扇","Air Circulator","A","行云","客单 500 元，日销 200+，小类稳居 top3，年销 1000W",null],
-  ["落地式冷风扇","Pedestal Air Cooler","A","一品","填补公司大件产品空白，客单 $50，年销 10,000+","dehum_c"],
-  ["塔扇 / 无叶风扇","Tower & Bladeless Fan","A","行云","两季产品线的延伸品类",null],
-  ["空气净化器","Air Purifier","A","行云","环境电器类目延伸",null],
-  ["暖风机 / 取暖器","Space Heater","A","行云","冬季线，与风扇线共用渠道",null],
-  ["两季产品","Dual-Season Appliance","A","行云","夏扇冬暖，一年两季的销售节奏",null],
-  ["移动空调","Portable Air Conditioner","A","行云","环境电器高客单探索",null],
-  ["加湿器","Humidifier","A","一品","与除湿机共用结构与模具经验",null],
-  // B 厨房电器 —— 10
-  ["空气炸锅","Air Fryer","B","行云","多品线布局，巅峰品类 top5，日销 700+，年销 3000W",null],
-  ["多士炉","Toaster","B","行云","欧美 / 加拿大渠道开发",null],
-  ["咖啡机","Coffee Machine","B","行云","深度协同项目（非直接负责）",null],
-  ["IH 电饭煲","IH Rice Cooker","B","行云 · 日韩","日韩渠道主力品类",null],
-  ["鹅颈咖啡壶","Gooseneck Kettle","B","行云 · 日韩","手冲细分，外观差异化空间大",null],
-  ["厨余垃圾处理器","Food Waste Disposer","B","行云","欧美厨房场景",null],
-  ["食物加热探针","Cooking Thermometer Probe","B","行云","精准烹饪细分",null],
-  ["破壁机 / 搅拌机","Blender","B","行云","厨房小电延伸",null],
-  ["电烤盘 / 煎烤机","Electric Griddle","B","行云","桌面烹饪场景",null],
-  ["慢炖锅","Slow Cooker","B","行云","欧美厨房常规品",null],
-  // C 清洁电器 —— 8（现公司主责）
-  ["无线吸尘器","Cordless Vacuum","C","海思拓普","清洁类目主力"],
-  ["扫地机器人","Robot Vacuum","C","海思拓普","清洁类目智能化线",null],
-  ["洗地机","Wet-Dry Vacuum Mop","C","海思拓普","湿拖细分",null],
-  ["除螨仪","UV Mite Vacuum","C","调研品类","做过 US/DE/UK 三区市场分析",null],
-  ["蒸汽拖把","Steam Mop","C","海思拓普","高温清洁细分",null],
-  ["高压清洗机","Pressure Washer","C","海思拓普","户外清洁，与花园线交叉",null],
-  ["地毯清洗机","Carpet Cleaner","C","海思拓普","深度清洁细分",null],
-  ["手持清洁刷","Handheld Cleaner Brush","C","海思拓普","配件型清洁工具",null],
-  // D 工具五金 —— 10
-  ["气保焊机 MIG","MIG Welder","D","1688 寻源","MIG-300 多功能气保焊机，对接工厂与报价",null],
-  ["迷你电焊机","Mini Welder","D","个人自购","自己的工具，也是自己的用户",null],
-  ["电钻 / 冲击钻","Drill & Impact Driver","D","工具五金","核心品类",null],
-  ["角磨机","Angle Grinder","D","工具五金","加工类电动工具",null],
-  ["电动螺丝刀","Electric Screwdriver","D","工具五金","家用工具线",null],
-  ["扳手 / 套筒","Wrench & Socket Set","D","工具五金","手动工具线",null],
-  ["户外强光手电","Tactical Flashlight","D","个人自购","户外照明，与户外线交叉",null],
-  ["瞄准镜配件","Optics Accessories","D","个人自购","户外装备细分",null],
-  ["工具箱 / 收纳","Tool Box & Storage","D","工具五金","工具类目配套",null],
-  ["测量工具","Measuring Tools","D","工具五金","激光测距 / 水平仪",null],
-  // E 户外 / 花园 —— 12（Amazon 占比最大 25%）
-  ["户外帐篷","Outdoor Tent","E","行云","户外品类开发",null],
-  ["高尔夫球包","Golf Bag","E","行云","运动户外细分",null],
-  ["滑雪背包","Ski Backpack","E","行云","雪季户外细分",null],
-  ["庭院家具","Patio Furniture","E","海思拓普","花园户外核心",null],
-  ["遮阳伞 / 车棚","Parasol & Canopy","E","海思拓普","庭院遮阳",null],
-  ["园艺工具","Garden Tools","E","海思拓普","花园维护",null],
-  ["割草机配件","Lawn Mower Parts","E","海思拓普","配件型机会",null],
-  ["户外太阳能照明","Solar Outdoor Light","E","海思拓普","庭院照明",null],
-  ["秋千 / 吊床","Swing & Hammock","E","海思拓普","庭院休闲",null],
-  ["烧烤架 / 户外炉","BBQ Grill & Stove","E","海思拓普","户外烹饪",null],
-  ["户外收纳棚","Outdoor Storage Shed","E","海思拓普","庭院收纳",null],
-  ["登山徒步装备","Hiking Gear","E","个人爱好","走过 318 川藏线",null],
-  // F 水上 / 泳池 —— 7
-  ["泳池清洁机器人","Pool Cleaning Robot","F","海思拓普","水上泳池类目",null],
-  ["充气泳池","Inflatable Pool","F","海思拓普","家庭水上",null],
-  ["泳池盖 / 保温膜","Pool Cover & Blanket","F","海思拓普","泳池配套",null],
-  ["水上浮排","Pool Float","F","海思拓普","水上休闲",null],
-  ["泳池梯 / 扶手","Pool Ladder & Rail","F","海思拓普","泳池安全",null],
-  ["水枪玩具","Water Blaster","F","海思拓普","儿童水上",null],
-  ["泳镜 / 潜水镜","Swim & Dive Goggles","F","海思拓普","水上运动",null],
-  // G 健康 / 个护 —— 12
-  ["高速吹风机","High-Speed Hair Dryer","G","行云 · 日韩","更新卖点 + 外观差异化，小类前 20，年销 1000W",null],
-  ["电动牙刷","Electric Toothbrush","G","行云","个护常规品",null],
-  ["按摩仪 / 筋膜枪","Massager & Massage Gun","G","海思拓普","大健康类目",null],
-  ["血压计","Blood Pressure Monitor","G","海思拓普","健康监测",null],
-  ["血糖分析仪","Blood Glucose Analyzer","G","朗云","医疗检测仪器外观与人机设计",null],
-  ["糖尿病耦合仪","Diabetes Coupling Device","G","朗云","医疗设备外观设计",null],
-  ["康复外骨骼","Rehabilitation Exoskeleton","G","物道 · 冬奥 2022","冬奥专供；绑缚 / 快拆围绕穿着者","exo_a"],
-  ["理疗仪 / 低频仪","TENS Therapy Device","G","海思拓普","家用理疗",null],
-  ["剃须刀","Electric Shaver","G","行云","个护小电",null],
-  ["美容仪","Beauty Device","G","行云 · 日韩","日韩渠道",null],
-  ["加热毯 / 坐垫 / 盖毯","Heated Blanket & Cushion","G","行云 · 日韩","日韩渠道冬季线",null],
-  ["冷感垫","Cooling Pad","G","行云 · 日韩","夏季降温细分",null],
-  // H 宠物 —— 6（经验较少，主动标注）
-  ["宠物电推剪","Pet Clipper","H","调研品类","US/DE/UK 三区市场分析，找新进入者机会",null],
-  ["宠物喂食器","Pet Feeder","H","个人自购","自己家在用",null],
-  ["宠物饮水机","Pet Water Fountain","H","调研品类","宠物类目延伸",null],
-  ["猫爬架 / 猫抓板","Cat Tree & Scratcher","H","调研品类","养猫人的第一手场景",null],
-  ["宠物摄像头","Pet Camera","H","调研品类","与消费电子交叉",null],
-  ["宠物清洁 / 除毛","Pet Grooming & Deshedding","H","调研品类","与清洁电器交叉",null],
-  // I 消费电子 —— 8
-  ["平板电脑","Tablet PC","I","行云 · 日韩","日韩渠道产品",null],
-  ["蓝牙音箱","Bluetooth Speaker","I","行云","消费电子线",null],
-  ["智能手表 / 手环","Smart Watch & Band","I","行云","可穿戴",null],
-  ["智能摄像头","Smart Camera","I","个人自购","小米摄像头，家用",null],
-  ["充电宝 / 快充","Power Bank & Fast Charger","I","行云","配件类",null],
-  ["投影仪","Projector","I","行云","家庭影音",null],
-  ["无人机","Drone","I","调研品类","消费电子延伸",null],
-  ["键盘 / 外设","Keyboard & Peripherals","I","个人使用","自编键位的习惯源头",null],
-  // J 医疗与工业装备 —— 10（职业起点）
-  ["医疗物流 AGV","Medical Logistics AGV","J","物道 · 新华医疗","清洗 / 重载 / 码垛三条线，驻厂验收","agv_a"],
-  ["医疗检测仪器","Medical Testing Instrument","J","朗云","仪器外观与人机设计",null],
-  ["物理抛光工作站","Physical Polishing Machine","J","物道 · 河北青州","钣金结构 + 2D 图纸发行，FANUC 机器人集成","pol_a"],
-  ["消防水枪","Fire Water Branch","J","物道 · 佛山三水","40+ 零件完整工程图；公差 / 密封 / 抗跌落","noz_a"],
-  ["商用蒸饭柜","Commercial Rice Steamer","J","朗云","商用厨具钣金设计","pol_b"],
-  ["通风柜","Fume Hood","J","朗云","商用厨具钣金设计",null],
-  ["环氧类设备","Epoxy Equipment","J","朗云","工业设备外观",null],
-  ["C919 头等舱座舱","C919 First Class Cabin","J","受 COMAC 邀请","半封闭透明亚克力整体热弯成型","c919_a"],
-  ["分拣烘干产线","Sorting & Drying Line","J","朗云客户 · 阿联酋","开心果产线，垂直立体布局",null],
-  ["外骨骼结构设计","Exoskeleton Structure","J","物道 · 冬奥","抗冲击外观件 + 快拆结构","exo_b"],
-  // K 渠道与市场 —— 5
-  ["Amazon 北美站","Amazon US","K","行云 · 海思","家用电器 / 环境电器 / 两季",null],
-  ["Amazon 欧洲站","Amazon UK / DE","K","行云 · 海思","UK 扣 20% VAT（无本土店）",null],
-  ["TikTok Shop UK","TikTok Shop UK","K","海思","内容电商，定价约 £64.99",null],
-  ["TikTok Shop DE","TikTok Shop DE","K","海思","内容电商，定价约 €64.99",null],
-  ["B 端客户 / ODM","B2B & ODM","K","一品 · 行云","B 端年销 30,000+ 的机型经验",null],
-  // L 方法与工具 —— 2
-  ["AI 流程搭建","AI Workflow Design","L","海思","协助搭建公司 AI 流程 + 全员培训",null],
-  ["3D 打印 / CMF 打样","3D Printing & CMF","L","2019 至今","自建打印设备，外观与工艺验证",null],
-  ["SolidWorks / Keyshot","CAD & Rendering","L","2019 至今","结构设计、图纸输出、渲染表达",null]
+  /* 每项：[中文, 英文, 大类ID, 涉足阶段, 一句话脉络, 图标key 或 img:真实图key] */
+  // A 环境电器 / 气候
+  ["除湿机","Dehumidifier","A","一品 · 行云","干衣款开发；业务线销售额 +30%，B 端年销 30,000+","img:dehum_a"],
+  ["加湿除湿一体机","Hybrid Humidifier-Dehumidifier","A","一品","拆机自研，客单价 $35，B 端年销 20,000+","img:dehum_b"],
+  ["空气循环扇","Air Circulator","A","行云","客单 500 元，日销 200+，小类稳居 top3，年销 1000W","fan"],
+  ["落地式冷风扇","Pedestal Air Cooler","A","一品","填补公司大件产品空白，客单 $50，年销 10,000+","img:dehum_c"],
+  ["暖风机 / 取暖器","Space Heater","A","行云","冬季线，与风扇线共用渠道","heat"],
+  ["空气净化器","Air Purifier","A","行云","环境电器类目延伸","wind"],
+  // B 厨房电器
+  ["空气炸锅","Air Fryer","B","行云","多品线布局，巅峰品类 top5，日销 700+，年销 3000W","fryer"],
+  ["多士炉","Toaster","B","行云","欧美 / 加拿大渠道开发","toaster"],
+  ["咖啡机","Coffee Machine","B","行云","深度协同项目","coffee"],
+  ["IH 电饭煲","IH Rice Cooker","B","行云 · 日韩","日韩渠道主力品类","pot"],
+  ["鹅颈咖啡壶","Gooseneck Kettle","B","行云 · 日韩","手冲细分，外观差异化空间大","kettle"],
+  ["破壁机 / 搅拌机","Blender","B","行云","厨房小电延伸","blender"],
+  // C 清洁电器（现公司主责）
+  ["无线吸尘器","Cordless Vacuum","C","海思拓普","清洁类目主力","vacuum"],
+  ["扫地机器人","Robot Vacuum","C","海思拓普","清洁类目智能化线","robot"],
+  ["洗地机","Wet-Dry Vacuum Mop","C","海思拓普","湿拖细分","mop"],
+  ["除螨仪","UV Mite Vacuum","C","调研品类","做过 US/DE/UK 三区市场分析","uv"],
+  ["高压清洗机","Pressure Washer","C","海思拓普","户外清洁，与花园线交叉","spray"],
+  ["蒸汽拖把","Steam Mop","C","海思拓普","高温清洁细分","steam"],
+  // D 工具五金
+  ["气保焊机 MIG","MIG Welder","D","1688 寻源","MIG-300 多功能气保焊机，对接工厂与报价","welder"],
+  ["电钻 / 冲击钻","Drill & Impact Driver","D","工具五金","核心品类","drill"],
+  ["角磨机","Angle Grinder","D","工具五金","加工类电动工具","grinder"],
+  ["电动螺丝刀","Electric Screwdriver","D","工具五金","家用工具线","screwdriver"],
+  ["扳手 / 套筒","Wrench & Socket Set","D","工具五金","手动工具线","wrench"],
+  ["测量工具","Measuring Tools","D","工具五金","激光测距 / 水平仪","measure"],
+  // E 户外 / 花园（Amazon 占比最大）
+  ["户外帐篷","Outdoor Tent","E","行云","户外品类开发","tent"],
+  ["庭院家具","Patio Furniture","E","海思拓普","花园户外核心","chair"],
+  ["遮阳伞 / 车棚","Parasol & Canopy","E","海思拓普","庭院遮阳","umbrella"],
+  ["园艺工具","Garden Tools","E","海思拓普","花园维护","leaf"],
+  ["烧烤架 / 户外炉","BBQ Grill & Stove","E","海思拓普","户外烹饪","grill"],
+  ["户外太阳能照明","Solar Outdoor Light","E","海思拓普","庭院照明","sun"],
+  // F 水上 / 泳池
+  ["泳池清洁机器人","Pool Cleaning Robot","F","海思拓普","水上泳池类目","robot"],
+  ["充气泳池","Inflatable Pool","F","海思拓普","家庭水上","pool"],
+  ["水上浮排","Pool Float","F","海思拓普","水上休闲","float"],
+  ["泳池盖 / 保温膜","Pool Cover & Blanket","F","海思拓普","泳池配套","cover"],
+  ["水枪玩具","Water Blaster","F","海思拓普","儿童水上","watergun"],
+  ["泳镜 / 潜水镜","Swim & Dive Goggles","F","海思拓普","水上运动","goggles"],
+  // G 健康 / 个护
+  ["高速吹风机","High-Speed Hair Dryer","G","行云 · 日韩","更新卖点 + 外观差异化，小类前 20，年销 1000W","hairdryer"],
+  ["电动牙刷","Electric Toothbrush","G","行云","个护常规品","toothbrush"],
+  ["按摩仪 / 筋膜枪","Massager & Massage Gun","G","海思拓普","大健康类目","massage"],
+  ["血压计","Blood Pressure Monitor","G","海思拓普","健康监测","heart"],
+  ["康复外骨骼","Rehabilitation Exoskeleton","G","物道 · 冬奥 2022","冬奥专供；绑缚 / 快拆围绕穿着者","img:exo_a"],
+  ["美容仪","Beauty Device","G","行云 · 日韩","日韩渠道","beauty"],
+  // H 宠物（经验较少，主动标注）
+  ["宠物电推剪","Pet Clipper","H","调研品类","US/DE/UK 三区市场分析，找新进入者机会","clipper"],
+  ["宠物喂食器","Pet Feeder","H","个人自购","自己家在用，第一手使用场景","feeder"],
+  ["宠物饮水机","Pet Water Fountain","H","调研品类","宠物类目延伸","fountain"],
+  ["猫爬架 / 猫抓板","Cat Tree & Scratcher","H","调研品类","养猫人的第一手场景","cat"],
+  ["宠物摄像头","Pet Camera","H","调研品类","与消费电子交叉","camera"],
+  ["宠物清洁 / 除毛","Pet Grooming & Deshedding","H","调研品类","与清洁电器交叉","groom"],
+  // I 消费电子
+  ["平板电脑","Tablet PC","I","行云 · 日韩","日韩渠道产品","tablet"],
+  ["蓝牙音箱","Bluetooth Speaker","I","行云","消费电子线","speaker"],
+  ["智能手表 / 手环","Smart Watch & Band","I","行云","可穿戴","watch"],
+  ["智能摄像头","Smart Camera","I","个人自购","小米摄像头，家用","camera"],
+  ["充电宝 / 快充","Power Bank & Fast Charger","I","行云","配件类","battery"],
+  ["投影仪","Projector","I","行云","家庭影音","projector"],
+  // J 医疗与工业装备（职业起点）
+  ["医疗物流 AGV","Medical Logistics AGV","J","物道 · 新华医疗","清洗 / 重载 / 码垛三条线，驻厂验收","img:agv_a"],
+  ["AGV 结构外罩","AGV Structure & Cover","J","物道 · 新华医疗","外观 / 结构 / CMF 一致性验收","img:agv_b"],
+  ["消防水枪","Fire Water Branch","J","物道 · 佛山三水","40+ 零件完整工程图；公差 / 密封 / 抗跌落","img:noz_a"],
+  ["物理抛光工作站","Polishing Workstation","J","物道 · 河北青州","钣金结构 + 2D 图纸发行，FANUC 机器人集成","img:pol_a"],
+  ["商用蒸饭柜","Commercial Rice Steamer","J","朗云","商用厨具钣金设计","img:pol_b"],
+  ["C919 头等舱座舱","C919 First Class Cabin","J","受 COMAC 邀请","半封闭透明亚克力整体热弯成型","img:c919_a"],
+  // K 渠道与市场
+  ["Amazon 北美站","Amazon US","K","行云 · 海思","家用电器 / 环境电器 / 两季","box"],
+  ["Amazon 欧洲站","Amazon UK / DE","K","行云 · 海思","UK 扣 20% VAT（无本土店）","eu"],
+  ["TikTok Shop UK","TikTok Shop UK","K","海思","内容电商，定价约 £64.99","play"],
+  ["TikTok Shop DE","TikTok Shop DE","K","海思","内容电商，定价约 €64.99","play"],
+  ["B 端客户 / ODM","B2B & ODM","K","一品 · 行云","B 端年销 30,000+ 的机型经验","factory"],
+  ["日韩渠道","Japan & Korea","K","行云","日韩产品线，外观差异化要求高","won"],
+  // L 方法与工具
+  ["AI 流程搭建","AI Workflow Design","L","海思","协助搭建公司 AI 流程 + 全员培训","chip"],
+  ["自建工作站 / ComfyUI","Workstation & ComfyUI","L","个人","自建水冷工作站，本地跑模型","img:work_b"],
+  ["3D 打印 / CMF 打样","3D Printing & CMF","L","2019 至今","自建打印设备，外观与工艺验证","print3d"],
+  ["SolidWorks / Keyshot","CAD & Rendering","L","2019 至今","结构设计、图纸输出、渲染表达","cad"],
+  ["利润测算模型","Profit Model","L","2023 至今","逐项拆解到盈亏平衡点，尺寸重量走实时数据","calc"],
+  ["趋势选品 / ASIN 分析","Trend & ASIN Mining","L","2024 至今","按 ASIN 维度找新进入者，销量按目标价位档估算","chart"]
 ];
+
+
+/* ==================== 领域图标库（24 网格线性图标） ==================== */
+function drawIcon(g, key, size, color, cx, cy){
+  if(!key) return;
+  var S = size/24;
+  g.save();
+  g.translate(cx, cy);
+  g.scale(S, S);
+  g.strokeStyle = color; g.fillStyle = color;
+  g.lineWidth = 76/size;
+  g.lineJoin = 'round'; g.lineCap = 'round';
+  function L(x1,y1,x2,y2){ g.beginPath(); g.moveTo(x1,y1); g.lineTo(x2,y2); g.stroke(); }
+  function C(x,y,r,a0,a1){ g.beginPath(); g.arc(x,y,r,a0===undefined?0:a0,a1===undefined?Math.PI*2:a1); g.stroke(); }
+  function RR(x,y,w,h,r){ g.beginPath(); g.moveTo(x+r,y); g.arcTo(x+w,y,x+w,y+h,r); g.arcTo(x+w,y+h,x,y+h,r); g.arcTo(x,y+h,x,y,r); g.arcTo(x,y,x+w,y,r); g.closePath(); g.stroke(); }
+  function D(x,y,r){ g.beginPath(); g.arc(x,y,r,0,Math.PI*2); g.fill(); }
+  function W(y,x1,x2,amp,ph){ g.beginPath(); for(var i=0;i<=18;i++){ var t=i/18, x=x1+(x2-x1)*t, yy=y+Math.sin(t*Math.PI*2+ph)*amp; i?g.lineTo(x,yy):g.moveTo(x,yy);} g.stroke(); }
+  function A(a){ g.globalAlpha = a; }
+  switch(key){
+    case 'drop': g.beginPath();g.moveTo(0,-9);g.bezierCurveTo(5.6,-2,7,1.4,7,4);g.bezierCurveTo(7,7.9,3.9,10,0,10);g.bezierCurveTo(-3.9,10,-7,7.9,-7,4);g.bezierCurveTo(-7,1.4,-5.6,-2,0,-9);g.closePath();g.stroke(); A(.45);C(-2.6,4.6,2.6); break;
+    case 'fan': C(0,0,2.4); for(var i=0;i<3;i++){ g.save(); g.rotate(i*2.0944); g.beginPath(); g.moveTo(0,-2.4); g.bezierCurveTo(1.2,-6,5,-7.6,7.4,-5.6); g.bezierCurveTo(8.6,-4.6,8,-2.6,5.8,-2.4); g.bezierCurveTo(3.4,-2.2,1.4,-2.4,0,-2.4); g.closePath(); g.stroke(); g.restore(); } break;
+    case 'heat': g.beginPath();g.moveTo(0,-9.5);g.bezierCurveTo(4,-4,6,-1,6,2.5);g.bezierCurveTo(6,6.4,3.3,8.6,0,8.6);g.bezierCurveTo(-3.3,8.6,-6,6.4,-6,2.5);g.bezierCurveTo(-6,-1,-4,-4,0,-9.5);g.closePath();g.stroke(); A(.5);g.beginPath();g.moveTo(0,-3.5);g.bezierCurveTo(2,-1,2.7,1.2,2.7,3);g.bezierCurveTo(2.7,5.3,1.4,6.4,0,6.4);g.bezierCurveTo(-1.4,6.4,-2.7,5.3,-2.7,3);g.bezierCurveTo(-2.7,1.2,-2,-1,0,-3.5);g.closePath();g.stroke(); break;
+    case 'wind': W(-4.5,-6.5,6.5,1.5,0); W(0,-7.5,7.5,1.5,1.1); W(4.5,-6.5,6.5,1.5,2.2); break;
+    case 'fryer': RR(-6.5,-7,13,6.5,2); RR(-7,-0.5,14,9,2.5); A(.6);L(-3,4,3,4); A(.4);W(-10.5,-7,7,1.2,0); break;
+    case 'toaster': RR(-8,-4.5,16,12,2.5); A(.6);L(-4,-1,4,-1);L(-4,1.5,4,1.5); A(1); RR(-3,-9,6,4.5,1.5); break;
+    case 'coffee': RR(-7.5,-9.5,15,8,2); A(.6);L(-3.5,-1.5,-3.5,1.5); A(1); RR(-5,1,10,7,1.5); g.beginPath();g.arc(5.5,4.5,2.2,-1.2,1.2);g.stroke(); A(.4);W(-11.5,-9.5,9.5,1.1,0); break;
+    case 'pot': g.beginPath();g.ellipse(0,-4,8,3,0,0,Math.PI*2);g.stroke(); g.beginPath();g.moveTo(-7,-3);g.lineTo(-6,7);g.quadraticCurveTo(0,9.5,6,7);g.lineTo(7,-3);g.stroke(); A(.55);L(-9.5,1.5,-7,1.5);L(9.5,1.5,7,1.5); break;
+    case 'kettle': RR(-6.5,-1.5,8.5,9,2); g.beginPath();g.moveTo(2,-1.5);g.bezierCurveTo(6,-3,8.5,-5,7,-8);g.stroke(); g.beginPath();g.arc(-2.5,-1.5,3.2,Math.PI,Math.PI*2);g.stroke(); A(.55);L(-6.5,1,-9,3.5); break;
+    case 'blender': g.beginPath();g.moveTo(-5.5,-8);g.lineTo(5.5,-8);g.lineTo(3.5,2.5);g.lineTo(-3.5,2.5);g.closePath();g.stroke(); RR(-6,2.5,12,7,1.5); A(.5);L(-3.5,-2,3.5,-2);L(-3,0.5,3,0.5); break;
+    case 'vacuum': RR(-8,-9.5,9,7.5,2); L(-3.5,-2,-3.5,5.5); g.beginPath();g.moveTo(-6.5,9.5);g.lineTo(0,9.5);g.lineTo(-1,5.5);g.lineTo(-5.5,5.5);g.closePath();g.stroke(); A(.5);C(1.5,-5.5,2.6); break;
+    case 'robot': C(0,0,9); A(.6);C(0,0,4.5); A(1); D(0,-6.5,1.3); break;
+    case 'mop': L(0,-9.5,0,2); RR(-6,2,12,5,1.5); A(.45);W(9.5,-5,5,1.2,0); break;
+    case 'uv': RR(-7,-5,14,11,2); A(.5);W(-10,-4,4,1.3,0);W(-10,-6.5,4,1.3,1.6); break;
+    case 'spray': RR(-8.5,-3,10,6,1.5); L(1.5,-1.5,7,-1.5); L(1.5,1.5,7,1.5); A(.5);L(8,-3,10.5,-5.5);L(8.5,0,11.5,0);L(8,3,10.5,5.5); A(1); L(-8.5,1,-8.5,7); L(-6.5,7,-3,7); break;
+    case 'steam': L(0,-9.5,0,2.5); RR(-6,2.5,12,4.5,1.5); A(.5);g.beginPath();g.arc(-3.5,-6,2,-0.8,2.2);g.stroke();g.beginPath();g.arc(3.5,-6,2,0.9,3.9);g.stroke(); break;
+    case 'welder': RR(-9.5,-6,10,12,2); A(.6);L(-5.5,-2,0.5,-2);L(-5.5,1,0.5,1); A(1); L(0.5,0,7,-2); D(8,-3,1.5); A(.45);L(9,-5,10.5,-7.5);L(9.5,-1,11.5,-1);L(6.5,-5.5,7,-8.5); break;
+    case 'drill': RR(-8.5,-5,12,9,2); L(3.5,-1,9.5,-1); A(.55);L(3.5,-2,9,-2); A(1); L(-8.5,1,-8.5,7.5); L(-6.5,7.5,-2,7.5); break;
+    case 'grinder': C(3.5,-2,6); A(.5);C(3.5,-2,2.5); A(1); RR(-9.5,-1,10,7.5,2); break;
+    case 'screwdriver': RR(-3,-9.5,6,7,1.5); L(0,-2.5,0,5.5); A(.6);L(-2.5,7,2.5,7);L(0,5.5,0,9.5); break;
+    case 'wrench': g.save(); g.rotate(-0.7854); RR(-2,-6,4,9,1); g.beginPath();g.arc(0,-6.5,4,0.2*Math.PI,0.8*Math.PI,true);g.stroke(); C(0,4.5,3); g.restore(); break;
+    case 'measure': RR(-9.5,-4,19,8,1.5); A(.6);for(var i=-6;i<=6;i+=3){L(i,-4,i,-1.5);} break;
+    case 'tent': g.beginPath();g.moveTo(0,-9.5);g.lineTo(9,7.5);g.lineTo(-9,7.5);g.closePath();g.stroke(); L(0,-9.5,0,7.5); A(.5);L(0,-1,-4.5,7.5);L(0,-1,4.5,7.5); break;
+    case 'chair': L(-6,8,-6,2); L(6,8,6,2); L(-7.5,2,7.5,2); L(-7.5,2,-7.5,-5); L(-7.5,-5,7.5,-5); L(7.5,-5,7.5,2); break;
+    case 'umbrella': g.beginPath();g.arc(0,3,8.5,Math.PI,0);g.stroke(); A(.55);L(-4.2,0.2,-4.2,3);L(4.2,0.2,4.2,3); A(1); L(0,3,0,9.5); L(-3.5,9.5,3.5,9.5); break;
+    case 'leaf': g.beginPath();g.moveTo(-8,8);g.bezierCurveTo(-8,-1,-2,-8,8,-8);g.bezierCurveTo(8,1,2,8,-8,8);g.closePath();g.stroke(); A(.5);L(-7,7,6,-6); break;
+    case 'grill': RR(-8,-1,16,8,1.5); L(-9.5,-1,9.5,-1); A(.55);for(var i=-6;i<=6;i+=4){L(i,-1,i,-5);} A(1); L(-7,3,-6,7.5); L(7,3,6,7.5); break;
+    case 'sun': C(0,-3,4); A(.6);for(var i=0;i<8;i++){var a=i*0.7854;L(Math.cos(a)*6,Math.sin(a)*6-3,Math.cos(a)*8,Math.sin(a)*8-3);} A(1); RR(-8,4,16,5,1); A(.5);L(0,4,0,9); break;
+    case 'pool': g.beginPath();g.moveTo(-9,-3);g.lineTo(9,-3);g.lineTo(7,7);g.lineTo(-7,7);g.closePath();g.stroke(); A(.5);W(1,-6.5,6.5,1.2,0);W(4,-6.5,6.5,1.2,1.8); break;
+    case 'float': C(0,0,8.5); A(.55);C(0,0,4);L(-8.5,0,8.5,0);L(0,-8.5,0,8.5); break;
+    case 'cover': RR(-9,-4,18,8,1.5); A(.5);W(-1,-7,7,1.3,0);W(3,-7,7,1.3,1.8); break;
+    case 'watergun': RR(-8.5,-2,9,5,1.5); L(0.5,0.5,7,0.5); L(-8.5,0,-8.5,6); L(-6.5,6,-2,6); A(.5);D(9,-1.5,1);D(10.5,-3,0.9);D(10,-0.5,0.8); break;
+    case 'goggles': g.beginPath();g.ellipse(-4.5,0,4.2,3.2,0,0,Math.PI*2);g.stroke(); g.beginPath();g.ellipse(4.5,0,4.2,3.2,0,0,Math.PI*2);g.stroke(); A(.6);L(-0.6,0,0.6,0);L(-8.7,-0.5,-11,-2);L(8.7,-0.5,11,-2); break;
+    case 'hairdryer': RR(-8.5,-4,10.5,8,3); L(2,-2,2,2); L(-8.5,0,-8.5,6.5); L(-6.5,6.5,-2,6.5); A(.5);L(5,-2.5,9.5,-2.5);L(5,1,9.5,1); break;
+    case 'toothbrush': RR(-2,-9.5,4,12,1.5); RR(-3.5,2.5,7,5,1); A(.6);for(var i=-2;i<=2.1;i+=2){L(i,2.5,i,-0.5);} break;
+    case 'massage': C(0,-4.5,4.5); L(-2.5,-0.2,2.5,-0.2); L(0,-0.2,0,9.5); A(.4);g.beginPath();g.arc(-6.5,-4.5,2.6,-1.2,1.2);g.stroke();g.beginPath();g.arc(6.5,-4.5,2.6,2.94,5.34);g.stroke(); break;
+    case 'heart': g.beginPath();g.moveTo(0,8.5);g.bezierCurveTo(-9,1,-8,-6.5,-3,-6.5);g.bezierCurveTo(-0.8,-6.5,0,-4.5,0,-4.5);g.bezierCurveTo(0,-4.5,0.8,-6.5,3,-6.5);g.bezierCurveTo(8,-6.5,9,1,0,8.5);g.closePath();g.stroke(); A(.5);g.beginPath();g.moveTo(-5,1.5);g.lineTo(-2.6,1.5);g.lineTo(-1,-1.5);g.lineTo(1,4.5);g.lineTo(2.6,1.5);g.lineTo(5,1.5);g.stroke(); break;
+    case 'exo': L(-5,-8.5,-5,8.5); L(5,-8.5,5,8.5); A(.6);L(-5,-3,5,-3);L(-5,3,5,3);D(-5,-5.5,1.6);D(5,-5.5,1.6);D(-5,5.5,1.6);D(5,5.5,1.6); break;
+    case 'beauty': g.beginPath();g.ellipse(0,-5,5,4,0,0,Math.PI*2);g.stroke(); RR(-2.5,-1,5,11,2); A(.45);g.beginPath();g.arc(0,-5,7.5,-0.85,0.85);g.stroke(); break;
+    case 'clipper': RR(-7,-6,14,7,2); A(.6);for(var i=-5;i<=5.1;i+=2.2){L(i,-6,i,-9.5);} A(1); L(-7,3,-7,8); L(-4.5,8,1.5,8); break;
+    case 'feeder': g.beginPath();g.moveTo(-5,-8.5);g.lineTo(5,-8.5);g.lineTo(3.5,0);g.lineTo(-3.5,0);g.closePath();g.stroke(); RR(-7,1,14,6,1.5); A(.5);D(0,5.5,1.2);D(-3,6,1);D(3,6,1); break;
+    case 'fountain': RR(-7,-1,14,7,1.5); g.beginPath();g.moveTo(-4,-6.5);g.lineTo(4,-6.5);g.lineTo(2,-2);g.lineTo(-2,-2);g.closePath();g.stroke(); A(.5);L(0,-2,0,-0.5);W(-8.5,-6.5,6.5,1.1,0); break;
+    case 'cat': L(-6,9,-6,-2); L(6,9,6,-2); L(-8.5,-2,8.5,-2); C(0,-6.5,3.6); g.beginPath();g.moveTo(-3.2,-8.6);g.lineTo(-4.2,-11.5);g.lineTo(-1,-10);g.stroke(); g.beginPath();g.moveTo(3.2,-8.6);g.lineTo(4.2,-11.5);g.lineTo(1,-10);g.stroke(); A(.6);D(-1.4,-7,0.8);D(1.4,-7,0.8); break;
+    case 'camera': RR(-7,-6,14,10,2); C(0,-1,3.5); A(.6);C(0,-1,1.4); A(1); L(-4,4,-4,8); L(4,4,4,8); L(-6.5,8,6.5,8); break;
+    case 'groom': RR(-8.5,-3,10.5,6,1.5); A(.7);for(var i=-6;i<=1.1;i+=1.8){L(i,3,i,8.5);} break;
+    case 'tablet': RR(-7,-9.5,14,19,2); A(.5);L(-3.5,6.5,3.5,6.5); break;
+    case 'speaker': RR(-6,-9.5,12,19,2.5); C(0,-4,3); A(.55);C(0,-4,1.2); A(1); C(0,4.5,2); break;
+    case 'watch': RR(-4.5,-8.5,9,6,1); RR(-4.5,2.5,9,6,1); RR(-5.5,-3,11,6,2.5); A(.6);L(0,-3,0,-0.5);L(0,-0.5,2.5,0.5); break;
+    case 'battery': RR(-8.5,-5,14,10,2); L(5.5,-2,5.5,2); A(.55);g.beginPath();g.moveTo(1,-4);g.lineTo(-3,0.5);g.lineTo(-0.5,0.5);g.lineTo(-2,4.5);g.lineTo(2.5,-0.5);g.lineTo(0,-0.5);g.closePath();g.stroke(); break;
+    case 'projector': RR(-8.5,-5,11,9,2); C(2.5,-0.5,2.6); A(.5);g.beginPath();g.moveTo(3,-3);g.lineTo(10.5,-7);g.lineTo(10.5,5);g.lineTo(3,3);g.closePath();g.stroke(); break;
+    case 'agv': RR(-9.5,-6,19,9,1.5); A(.7);D(-5.5,4.5,1.8);D(5.5,4.5,1.8); A(1); RR(-6,-9.5,12,3.5,1); A(.5);L(-6,-7.8,6,-7.8); break;
+    case 'lab': RR(-7,-3,14,11,1.5); RR(-3,-9.5,6,6,1); A(.55);L(-4,2,4,2);L(-4,5,-1,5); break;
+    case 'polish': C(-2.5,0,6); A(.6);C(-2.5,0,2); A(1); RR(4.5,-6,6.5,12,1.5); A(.45);L(2,-7,5,-10);L(4,-8.5,7,-10.5); break;
+    case 'nozzle': RR(-9.5,-3,10,6,1.5); g.beginPath();g.moveTo(0.5,-2.5);g.lineTo(7,-4.5);g.lineTo(7,4.5);g.lineTo(0.5,2.5);g.closePath();g.stroke(); L(-9.5,1,-9.5,7); L(-7.5,7,-3,7); A(.5);W(9.5,-3,3,1.2,0); break;
+    case 'cabinet': RR(-8,-8.5,16,17,1.5); A(.6);L(-8,-2,8,-2);L(-8,4,8,4); A(1); A(.5);D(5.5,-5,1.2);D(5.5,1,1.2); A(1); A(.4);W(-10.5,-6,6,1.2,0); break;
+    case 'seat': g.beginPath();g.moveTo(-6,9);g.lineTo(-6,1);g.lineTo(-4,-2);g.lineTo(4,-2);g.lineTo(6,1);g.lineTo(6,9);g.stroke(); RR(-7,-8,14,6,2.5); A(.55);L(-4,-2,-4,9);L(4,-2,4,9); break;
+    case 'box': g.beginPath();g.moveTo(-8,-4);g.lineTo(0,-7.5);g.lineTo(8,-4);g.lineTo(8,4);g.lineTo(0,7.5);g.lineTo(-8,4);g.closePath();g.stroke(); A(.6);L(-8,-4,0,-1);L(8,-4,0,-1);L(0,-1,0,7.5); break;
+    case 'eu': C(0,0,8.5); A(.6);for(var i=0;i<12;i++){var a=i*0.5236;D(Math.cos(a)*5.5,Math.sin(a)*5.5,0.85);} break;
+    case 'play': C(0,0,9.5); g.beginPath();g.moveTo(-3.5,-5);g.lineTo(6,0);g.lineTo(-3.5,5);g.closePath();g.fill(); break;
+    case 'factory': g.beginPath();g.moveTo(-9.5,7);g.lineTo(-9.5,-2);g.lineTo(-3.5,2);g.lineTo(-3.5,-2);g.lineTo(3.5,2);g.lineTo(3.5,-2);g.lineTo(9.5,-2);g.lineTo(9.5,7);g.closePath();g.stroke(); A(.6);RR(5.5,-9,3,7,0.5); break;
+    case 'won': C(0,0,8.5); A(.7);C(0,0,4);L(-2.5,-2.5,-2.5,2.5);L(2.5,-2.5,2.5,2.5);L(-2.5,0,2.5,0); break;
+    case 'chip': RR(-5,-5,10,10,1.5); A(.6);for(var i=-3;i<=3.1;i+=3){L(i,-5,i,-8.5);L(i,5,i,8.5);L(-5,i,-8.5,i);L(5,i,8.5,i);} break;
+    case 'print3d': g.beginPath();g.moveTo(-7,-1.5);g.lineTo(0,-5.5);g.lineTo(7,-1.5);g.lineTo(0,2.5);g.closePath();g.stroke(); L(-7,-1.5,-7,4); L(-7,4,0,8); L(0,8,7,4); L(7,4,7,-1.5); RR(-4,-10,8,4,1); A(.5);L(0,-6,0,-2); break;
+    case 'cad': g.beginPath();g.moveTo(-6,-3);g.lineTo(0,-6);g.lineTo(6,-3);g.lineTo(0,0);g.closePath();g.stroke(); L(-6,-3,-6,4); L(-6,4,0,7); L(0,7,0,0); L(6,-3,6,4); L(6,4,0,7); break;
+    case 'calc': RR(-8.5,-8.5,17,17,1.5); A(.6);L(-8.5,-3,8.5,-3);L(-8.5,2.5,8.5,2.5);L(0,-3,0,8.5); A(1); A(.85);L(-5.5,-6,-1.5,-6);L(-5.5,5,-1.5,5);L(2,5,6,5); break;
+    case 'chart': L(-8,-7,-8,8); L(-8,8,8.5,8); A(.7);g.beginPath();g.moveTo(-7,4.5);g.lineTo(-3,0.5);g.lineTo(1,3.5);g.lineTo(7,-6);g.stroke();D(7,-6,1.6); break;
+    case 'globe': C(0,0,8.5); A(.6);g.beginPath();g.ellipse(0,0,3.6,8.5,0,0,Math.PI*2);g.stroke();L(-8.5,0,8.5,0); A(1); A(.4);L(-7.3,-4.5,7.3,-4.5);L(-7.3,4.5,7.3,4.5); break;
+    default: C(0,0,7); A(.5);C(0,0,3); break;
+  }
+  g.globalAlpha = 1;
+  g.restore();
+}
 
 /* ==================== 渲染时间轴 ==================== */
 (function(){
@@ -812,6 +915,8 @@ const DOMAINS = [
   const panel = document.getElementById('panel');
 
   let W = 0, H = 0, DPR = Math.min(window.devicePixelRatio||1, 2);
+  let nodeR = 15, alpha = 0.03;
+  const IMGS = {};
   let nodes = [], links = [], signals = [];
   let hover = null, active = null, focusCluster = null;
   let raf = null, t0 = performance.now();
@@ -824,9 +929,11 @@ const DOMAINS = [
       for(let k = 0; k < CLUSTERS.length; k++){ if(CLUSTERS[k].id === d[2]){ ci = k; break; } }
       const cl = CLUSTERS[ci];
       return {
-        i:i, zh:d[0], en:d[1], cid:d[2], org:d[3]||"", note:d[4]||"", img:d[5]||null,
+        i:i, zh:d[0], en:d[1], cid:d[2], org:d[3]||"", note:d[4]||"",
+        img:(d[5] && d[5].indexOf("img:")===0) ? d[5].slice(4) : null,
+        icon:(d[5] && d[5].indexOf("img:")===0) ? null : (d[5]||null),
         ci:ci, color:cl.color, cluster:cl.name,
-        x:0, y:0, vx:0, vy:0, r:5 + Math.random()*2.2, phase:Math.random()*Math.PI*2
+        x:0, y:0, vx:0, vy:0, r:15, phase:Math.random()*Math.PI*2, _cv:null
       };
     });
 
@@ -874,56 +981,76 @@ const DOMAINS = [
     return dx*dx + dy*dy <= 1;
   }
 
-  /* ---- 力导向 ---- */
-  function tick(dt){
-    const iters = 1;
-    for(let it = 0; it < iters; it++){
-      // 斥力（节点间）
-      for(let i = 0; i < nodes.length; i++){
-        for(let j = i+1; j < nodes.length; j++){
-          const a = nodes[i], b = nodes[j];
-          let dx = b.x - a.x, dy = b.y - a.y;
-          let d2 = dx*dx + dy*dy;
-          if(d2 < 1e-6){ d2 = 1e-6; dx = (Math.random()-0.5)*0.01; dy = (Math.random()-0.5)*0.01; }
-          const d = Math.sqrt(d2);
-          const minD = 0.052;
-          if(d < minD*2.3){
-            const f = (0.00030 / d2) * (1 - d/(minD*2.3) + 0.35);
-            const ux = dx/d, uy = dy/d;
-            a.vx -= ux*f; a.vy -= uy*f;
-            b.vx += ux*f; b.vy += uy*f;
-          }
+  /* ---- 力导向（像素空间；alpha 控制收敛速度） ---- */
+  function tick(a){
+    if(a <= 0) return;
+    const minD = nodeR * 2.30;
+    const repRange = minD * 2.05;
+    for(let i = 0; i < nodes.length; i++){
+      for(let j = i+1; j < nodes.length; j++){
+        const A = nodes[i], B = nodes[j];
+        let dx = (B.x - A.x)*W, dy = (B.y - A.y)*H;
+        let d2 = dx*dx + dy*dy;
+        if(d2 < 1e-4){ dx = (Math.random()-0.5)*2; dy = (Math.random()-0.5)*2; d2 = dx*dx+dy*dy; }
+        const d = Math.sqrt(d2);
+        if(d < repRange){
+          const f = (1 - d/repRange) * 30 * a;
+          const ux = dx/d, uy = dy/d;
+          A.vx -= ux*f/W; A.vy -= uy*f/H;
+          B.vx += ux*f/W; B.vy += uy*f/H;
         }
       }
-      // 引力（连边）
-      links.forEach(function(l){
-        const dx = l.b.x - l.a.x, dy = l.b.y - l.a.y;
-        const d = Math.max(Math.sqrt(dx*dx+dy*dy), 1e-4);
-        const target = 0.054;
-        const f = (d - target) * 0.0075;
-        const ux = dx/d, uy = dy/d;
-        l.a.vx += ux*f; l.a.vy += uy*f;
-        l.b.vx -= ux*f; l.b.vy -= uy*f;
-      });
-      // 向大类中心
-      nodes.forEach(function(n){
-        const cl = CLUSTERS[n.ci];
-        n.vx += (cl._cx - n.x) * 0.042;
-        n.vy += (cl._cy - n.y) * 0.042;
-        // 软边界：拉回大脑轮廓内
-        if(!inBrain(n.x, n.y, 0.0)){
-          n.vx += (0.5 - n.x) * 0.045;
-          n.vy += (0.5 - n.y) * 0.045;
-        }
-      });
-      // 积分 + 阻尼
-      nodes.forEach(function(n){
-        n.vx *= 0.86; n.vy *= 0.86;
-        const vm = Math.hypot(n.vx, n.vy);
-        if(vm > 0.02){ n.vx = n.vx/vm*0.02; n.vy = n.vy/vm*0.02; }
-        n.x += n.vx; n.y += n.vy;
-      });
     }
+    links.forEach(function(l){
+      const dx = (l.b.x - l.a.x)*W, dy = (l.b.y - l.a.y)*H;
+      const d = Math.max(Math.sqrt(dx*dx + dy*dy), 1e-3);
+      const f = (d - minD*1.55) * 0.014 * a;
+      const ux = dx/d, uy = dy/d;
+      l.a.vx += ux*f/W; l.a.vy += uy*f/H;
+      l.b.vx -= ux*f/W; l.b.vy -= uy*f/H;
+    });
+    nodes.forEach(function(n){
+      const cl = CLUSTERS[n.ci];
+      n.vx += (cl._cx - n.x) * 0.34 * a;
+      n.vy += (cl._cy - n.y) * 0.34 * a;
+      if(!inBrain(n.x, n.y, 0.0)){
+        n.vx += (0.5 - n.x) * 0.42 * a;
+        n.vy += (0.5 - n.y) * 0.42 * a;
+      }
+    });
+    nodes.forEach(function(n){
+      n.vx *= 0.80; n.vy *= 0.80;
+      const vm = Math.hypot(n.vx*W, n.vy*H);
+      const cap = 7;
+      if(vm > cap){ n.vx = n.vx/vm*cap; n.vy = n.vy/vm*cap; }
+      n.x += n.vx; n.y += n.vy;
+    });
+  }
+
+  /* ---- 节点圆内图像：真实项目图 或 领域图标 ---- */
+  function makeNodeCanvas(n){
+    const R = Math.max(8, Math.round(nodeR));
+    const c = document.createElement('canvas');
+    c.width = Math.round(R*2*DPR); c.height = Math.round(R*2*DPR);
+    const g = c.getContext('2d');
+    g.setTransform(DPR,0,0,DPR,0,0);
+    const cx = R, cy = R;
+    const bg = g.createRadialGradient(cx,cy,0,cx,cy,R);
+    bg.addColorStop(0, hexA(n.color, 0.26));
+    bg.addColorStop(1, '#0A1018');
+    g.fillStyle = bg; g.beginPath(); g.arc(cx,cy,R,0,Math.PI*2); g.fill();
+    const im = n.img ? IMGS[n.img] : null;
+    if(im && im.complete && im.naturalWidth){
+      g.save(); g.beginPath(); g.arc(cx,cy,R-1.2,0,Math.PI*2); g.clip();
+      const iw = im.naturalWidth, ih = im.naturalHeight;
+      const sc = Math.max((2*(R-1.2))/iw, (2*(R-1.2))/ih);
+      const dw = iw*sc, dh = ih*sc;
+      g.drawImage(im, cx-dw/2, cy-dh/2, dw, dh);
+      g.globalAlpha = 0.46; g.fillStyle = '#05080E'; g.fillRect(0,0,R*2,R*2);
+      g.globalAlpha = 1; g.restore();
+    }
+    drawIcon(g, n.icon, R*1.32, n.color, cx, cy);
+    return c;
   }
 
   /* ---- 绘制 ---- */
@@ -950,9 +1077,9 @@ const DOMAINS = [
 
     // 信号粒子
     if(!REDUCE){
-      if(signals.length < 26 && Math.random() < .30){
+      if(signals.length < 15 && Math.random() < .085){
         const l = links[Math.floor(Math.random()*links.length)];
-        if(l) signals.push({l:l, p:0, sp:0.0045 + Math.random()*0.011});
+        if(l) signals.push({l:l, p:0, sp:0.0016 + Math.random()*0.0026});
       }
       for(let i = signals.length-1; i >= 0; i--){
         const s = signals[i];
@@ -969,39 +1096,49 @@ const DOMAINS = [
       }
     }
 
-    // 节点
-    const pulse = REDUCE ? 0 : Math.sin(t*1.5);
+    // 节点：每个圆点内嵌一张参考图（真实项目图 或 领域图标）
     nodes.forEach(function(n){
       const shown = n.i < activation;
       if(!shown) return;
       const isHov = hover === n, isAct = active === n;
       const dim = focusCluster !== null && n.ci !== focusCluster;
-      let r = n.r;
-      if(isHov || isAct) r *= 2.05;
-      const breathe = 1 + 0.10 * Math.sin(t*1.5 + n.phase);
-      r *= REDUCE ? 1 : breathe;
+      let r = nodeR;
+      if(isHov || isAct) r *= 1.30;
+      const breathe = 1 + (REDUCE ? 0 : 0.022 * Math.sin(t*0.55 + n.phase));
+      r *= breathe;
 
       const x = n.x*W, y = n.y*H;
 
-      // 光晕
       if(!dim){
-        const g = ctx.createRadialGradient(x,y,0,x,y,r*4.2);
-        g.addColorStop(0, hexA(n.color, (isHov||isAct)?0.42:0.17));
-
+        const g = ctx.createRadialGradient(x,y,0,x,y,r*3.4);
+        g.addColorStop(0, hexA(n.color, (isHov||isAct)?0.40:0.16));
         g.addColorStop(1, hexA(n.color, 0));
         ctx.fillStyle = g;
-        ctx.beginPath(); ctx.arc(x,y,r*4.2,0,Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.arc(x,y,r*3.4,0,Math.PI*2); ctx.fill();
       }
 
+      if(dim){
+        ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2);
+        ctx.fillStyle = '#141B25'; ctx.globalAlpha = .55; ctx.fill(); ctx.globalAlpha = 1;
+        ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2);
+        ctx.strokeStyle = hexA(n.color,.22); ctx.lineWidth = 1; ctx.stroke();
+        return;
+      }
+
+      if(!n._cv) n._cv = makeNodeCanvas(n);
+      ctx.save();
+      ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2); ctx.clip();
+      ctx.drawImage(n._cv, x-r, y-r, r*2, r*2);
+      ctx.restore();
+
       ctx.beginPath(); ctx.arc(x,y,r,0,Math.PI*2);
-      ctx.fillStyle = dim ? '#1B2431' : n.color;
-      ctx.globalAlpha = dim ? .5 : 1;
-      ctx.fill();
-      ctx.globalAlpha = 1;
+      ctx.strokeStyle = (isHov||isAct) ? n.color : hexA(n.color, .55);
+      ctx.lineWidth = (isHov||isAct) ? 2 : 1.15;
+      ctx.stroke();
 
       if(isHov || isAct){
-        ctx.beginPath(); ctx.arc(x,y,r+4.5,0,Math.PI*2);
-        ctx.strokeStyle = n.color; ctx.globalAlpha=.55; ctx.lineWidth=1.2; ctx.stroke();
+        ctx.beginPath(); ctx.arc(x,y,r+5.5,0,Math.PI*2);
+        ctx.strokeStyle = n.color; ctx.globalAlpha = .38; ctx.lineWidth = 1.2; ctx.stroke();
         ctx.globalAlpha = 1;
       }
     });
@@ -1080,6 +1217,8 @@ const DOMAINS = [
   function resize(){
     const r = cv.getBoundingClientRect();
     W = r.width; H = r.height;
+    nodeR = Math.max(10, Math.min(19, W*0.0128));
+    nodes.forEach(function(n){ n._cv = null; });
     cv.width = Math.round(W*DPR);
     cv.height = Math.round(H*DPR);
     ctx.setTransform(DPR,0,0,DPR,0,0);
@@ -1120,6 +1259,7 @@ const DOMAINS = [
   });
   window.addEventListener('mouseup', function(){
     if(dragging && !moved){ select(dragging); }
+    if(dragging){ alpha = 0.30; }
     dragging = null;
   });
   cv.addEventListener('mouseleave', function(){
@@ -1145,6 +1285,7 @@ const DOMAINS = [
         '<div class="panel-m"><span>'+n.cluster+'</span>'+(n.org && n.org!==n.cluster ? '<span>'+n.org+'</span>' : '')+'</div>'+
       '</div>';
     const box = document.getElementById('pimg');
+    box.style.background = 'radial-gradient(circle at 50% 42%, ' + hexA(n.color,0.20) + ', #0A1018 72%)';
     if(n.img && P_SMALL[n.img]){
       const im = new Image();
       im.src = P_SMALL[n.img];
@@ -1152,9 +1293,11 @@ const DOMAINS = [
       box.appendChild(im);
     } else {
       const c = document.createElement('canvas');
-      c.width = 150; c.height = 150;
+      const px = Math.round(150*DPR);
+      c.width = px; c.height = px;
       const cc = c.getContext('2d');
-      drawGlyph(cc, 75, 75, 52, n.color, n.i);
+      cc.setTransform(DPR,0,0,DPR,0,0);
+      drawIcon(cc, n.icon, 94, n.color, 75, 75);
       box.appendChild(c);
     }
   }
@@ -1211,12 +1354,11 @@ const DOMAINS = [
 
   /* ---- 动画循环 ---- */
   function loop(now){
-    tick();
+    if(alpha > 0.03){ alpha *= 0.965; if(alpha < 0.03) alpha = 0.03; }
+    tick(alpha);
     draw(now);
-    // 逐节点点亮
     if(activation < nodes.length && !REDUCE){
-      const target = Math.min(nodes.length, activation + 1.4);
-      activation = target;
+      activation = Math.min(nodes.length, activation + 1.2);
     } else if(REDUCE){ activation = nodes.length; }
     raf = requestAnimationFrame(loop);
   }
@@ -1250,15 +1392,87 @@ const DOMAINS = [
     resize();
     build();
     buildLegend();
-    // 打散初始位置（围绕中心随机），让收敛过程成为动画
+    // 预加载真实项目图
     nodes.forEach(function(n){
-      const a = Math.random()*Math.PI*2, r = 0.04 + Math.random()*0.20;
-      n.x = 0.5 + Math.cos(a)*r; n.y = 0.5 + Math.sin(a)*r;
+      if(n.img && P_SMALL[n.img] && !IMGS[n.img]){
+        const im = new Image();
+        IMGS[n.img] = im;
+        im.onload = function(){
+          nodes.forEach(function(m){ if(m.img === n.img) m._cv = null; });
+        };
+        im.src = P_SMALL[n.img];
+      }
+    });
+    // 打散初始位置
+    nodes.forEach(function(n){
+      const a = Math.random()*Math.PI*2, rr = 0.04 + Math.random()*0.20;
+      n.x = 0.5 + Math.cos(a)*rr; n.y = 0.5 + Math.sin(a)*rr;
       n.vx = 0; n.vy = 0;
     });
+    // 预收敛：布局在首帧之前跑完，页面上看不到抖动
+    for(let i = 0; i < 340; i++) tick(1 - i/340);
+    nodes.forEach(function(n){ n.vx = 0; n.vy = 0; });
+    alpha = 0.03;
     activation = 0;
     t0 = performance.now();
+    buildOverview();
     raf = requestAnimationFrame(loop);
+  }
+
+  /* ---- 领域全览：横向滑动卡片 ---- */
+  function buildOverview(){
+    const track = document.getElementById('ovtrack');
+    if(!track) return;
+    track.innerHTML = '';
+    nodes.forEach(function(n){
+      const el = document.createElement('div');
+      el.className = 'ov-c';
+      el.style.color = n.color;
+
+      const box = document.createElement('div');
+      box.className = 'ov-i';
+      if(n.img && P_SMALL[n.img]){
+        const im = new Image();
+        im.src = P_SMALL[n.img]; im.alt = n.zh; im.loading = 'lazy';
+        box.appendChild(im);
+      } else {
+        const c = document.createElement('canvas');
+        const px = Math.round(108*DPR);
+        c.width = px; c.height = px;
+        const cc = c.getContext('2d');
+        cc.setTransform(DPR,0,0,DPR,0,0);
+        const bg = cc.createRadialGradient(54,54,0,54,54,54);
+        bg.addColorStop(0, hexA(n.color,0.17)); bg.addColorStop(1,'#0A1018');
+        cc.fillStyle = bg; cc.fillRect(0,0,108,108);
+        drawIcon(cc, n.icon, 62, n.color, 54, 54);
+        box.appendChild(c);
+      }
+
+      const t = document.createElement('div'); t.className = 'ov-t'; t.textContent = n.zh;
+      const e = document.createElement('div'); e.className = 'ov-e'; e.textContent = n.en;
+      const o = document.createElement('div'); o.className = 'ov-o'; o.textContent = n.org;
+      el.appendChild(box); el.appendChild(t); el.appendChild(e); el.appendChild(o);
+
+      el.addEventListener('click', function(){
+        select(n);
+        Array.prototype.forEach.call(track.children, function(x){ x.classList.remove('on'); });
+        el.classList.add('on');
+        const sec = document.getElementById('network');
+        if(sec) sec.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+      track.appendChild(el);
+    });
+
+    // 鼠标横向拖动
+    let dn = false, sx = 0, sl = 0, mv = 0;
+    track.addEventListener('mousedown', function(e){ dn = true; mv = 0; sx = e.clientX; sl = track.scrollLeft; track.style.cursor = 'grabbing'; });
+    window.addEventListener('mouseup', function(){ dn = false; track.style.cursor = ''; });
+    track.addEventListener('mousemove', function(e){
+      if(!dn) return;
+      mv = Math.abs(e.clientX - sx);
+      track.scrollLeft = sl - (e.clientX - sx);
+    });
+    track.addEventListener('click', function(e){ if(mv > 6){ e.stopPropagation(); } }, true);
   }
 
   if('IntersectionObserver' in window){
