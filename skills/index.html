@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>技能与资源库 · 新产品开发</title>
+<style>
+:root{
+  --bg:#f6f5f1;--paper:#ffffff;--ink:#17181c;--ink2:#5b5d66;--ink3:#8e9098;
+  --line:#e3e1da;--accent:#1a56db;--accent-soft:#eaf0ff;
+  --hot:#c2410c;--ok:#0f766e;--r:14px;
+  --shadow:0 1px 2px rgba(20,20,25,.04),0 8px 24px rgba(20,20,25,.06);
+  --mono:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--ink);
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,-apple-system,sans-serif;
+  line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:48px 48px;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 0%,#000 0%,transparent 70%);
+          mask-image:radial-gradient(ellipse at 50% 0%,#000 0%,transparent 70%);
+}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+
+/* ---------- nav ---------- */
+nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);
+  background:rgba(246,245,241,.82);border-bottom:1px solid var(--line)}
+.navin{max-width:1120px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:28px}
+.brand{font-weight:800;letter-spacing:-.02em;font-size:16px;display:flex;align-items:center;gap:9px;white-space:nowrap}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.navlinks{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.navlinks a{color:var(--ink2);text-decoration:none;font-size:13.5px;padding:6px 11px;border-radius:8px;transition:.2s;white-space:nowrap}
+.navlinks a:hover{background:var(--paper);color:var(--ink);box-shadow:var(--shadow)}
+@media(max-width:860px){.navlinks{display:none}}
+
+/* ---------- hero ---------- */
+header{padding:84px 0 56px;position:relative}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:7px 13px;border-radius:99px}
+h1{font-size:clamp(34px,6vw,62px);line-height:1.08;letter-spacing:-.035em;margin:24px 0 0;font-weight:850}
+h1 em{font-style:normal;background:linear-gradient(180deg,transparent 62%,#ffd8a8 62%);padding:0 2px}
+.sub{font-size:clamp(15px,2vw,19px);color:var(--ink2);max-width:660px;margin:22px 0 0}
+.cta{display:flex;gap:12px;margin-top:34px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:11px;font-size:14.5px;
+  font-weight:650;text-decoration:none;border:1px solid var(--line);background:var(--paper);color:var(--ink);
+  transition:.2s;box-shadow:var(--shadow)}
+.btn:hover{transform:translateY(-2px);border-color:#cfccc2}
+.btn.p{background:var(--ink);color:#fff;border-color:var(--ink)}
+.btn.p:hover{background:#000}
+
+/* hero visual */
+.heroviz{margin-top:56px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:860px){.heroviz{grid-template-columns:repeat(2,1fr)}}
+.tile{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:var(--shadow);
+  transition:.25s;position:relative;overflow:hidden}
+.tile:hover{transform:translateY(-4px)}
+.tile .ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;margin-bottom:12px}
+.tile b{display:block;font-size:14px;letter-spacing:-.01em}
+.tile span{font-size:12px;color:var(--ink3);display:block;margin-top:3px;line-height:1.5}
+.tile .bar{height:4px;border-radius:99px;background:var(--line);margin-top:12px;overflow:hidden}
+.tile .bar i{display:block;height:100%;border-radius:99px;background:var(--accent);width:0;transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+
+/* ---------- section ---------- */
+section{padding:76px 0;border-top:1px solid var(--line)}
+.shead{display:flex;align-items:flex-end;gap:18px;margin-bottom:38px;flex-wrap:wrap}
+.snum{font-family:var(--mono);font-size:12px;color:var(--ink3);letter-spacing:.1em;padding-top:8px}
+h2{font-size:clamp(24px,3.4vw,36px);letter-spacing:-.03em;line-height:1.18;font-weight:800}
+.sdesc{color:var(--ink2);font-size:14.5px;margin-top:10px;max-width:620px}
+
+/* ---------- skill grid ---------- */
+.skgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:900px){.skgrid{grid-template-columns:1fr}}
+.sk{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:22px;
+  box-shadow:var(--shadow);transition:.25s;position:relative}
+.sk:hover{transform:translateY(-4px);border-color:#cfccc2}
+.sk h3{font-size:16px;letter-spacing:-.015em;display:flex;align-items:center;gap:9px}
+.sk p{font-size:13.5px;color:var(--ink2);margin-top:10px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+.chip{font-size:11.5px;padding:4px 9px;border-radius:7px;background:#f1efe9;color:var(--ink2);border:1px solid var(--line)}
+.chip.k{background:var(--accent-soft);color:var(--accent);border-color:#d6e2ff}
+.lvl{margin-top:16px;display:flex;gap:4px}
+.lvl i{flex:1;height:5px;border-radius:99px;background:var(--line)}
+.lvl i.on{background:var(--ink)}
+
+/* ---------- workflow ---------- */
+.flow{display:grid;grid-template-columns:repeat(6,1fr);gap:0;background:var(--paper);
+  border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+@media(max-width:900px){.flow{grid-template-columns:repeat(2,1fr)}}
+.step{padding:22px 18px;border-right:1px solid var(--line);position:relative;transition:.25s}
+.step:last-child{border-right:0}
+.step:hover{background:#fbfaf7}
+.step u{font-family:var(--mono);font-size:11px;color:var(--accent);text-decoration:none;letter-spacing:.08em}
+.step b{display:block;font-size:14px;margin:8px 0 6px;letter-spacing:-.01em}
+.step p{font-size:12.2px;color:var(--ink3);line-height:1.6}
+@media(max-width:900px){.step:nth-child(2n){border-right:0}.step{border-bottom:1px solid var(--line)}}
+
+/* ---------- resource ---------- */
+.resgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:860px){.resgrid{grid-template-columns:1fr}}
+.res{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+  box-shadow:var(--shadow);transition:.25s;display:flex;flex-direction:column}
+.res:hover{transform:translateY(-4px);border-color:#cfccc2}
+.resbody{padding:20px 22px;flex:1}
+.res h3{font-size:16px;letter-spacing:-.015em;display:flex;align-items:center;gap:8px}
+.res p{font-size:13.2px;color:var(--ink2);margin-top:9px}
+.res pre{margin:14px 0 0;background:#1a1b20;color:#e6e6ea;border-radius:11px;padding:14px 15px;
+  font-family:var(--mono);font-size:12.2px;line-height:1.75;overflow-x:auto;white-space:pre}
+.res pre .c{color:#7d8899}.res pre .k{color:#ffcb6b}.res pre .v{color:#a5d6a7}
+.resfoot{display:flex;align-items:center;gap:10px;padding:13px 22px;border-top:1px solid var(--line);background:#fbfaf7}
+.copybtn{font-family:inherit;font-size:12.5px;font-weight:650;padding:7px 13px;border-radius:9px;
+  border:1px solid var(--line);background:var(--paper);color:var(--ink);cursor:pointer;transition:.2s}
+.copybtn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.copybtn.ok{background:var(--ok);color:#fff;border-color:var(--ok)}
+.tag{font-size:11px;color:var(--ink3);font-family:var(--mono);letter-spacing:.04em}
+
+/* ---------- checklist ---------- */
+.checks{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:26px;box-shadow:var(--shadow)}
+.checks h3{font-size:15px;margin-bottom:6px}
+.checks>p{font-size:13px;color:var(--ink2);margin-bottom:18px}
+.crow{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:860px){.crow{grid-template-columns:1fr}}
+.citem{border:1px solid var(--line);border-radius:11px;padding:13px 14px;display:flex;gap:10px;align-items:flex-start;
+  transition:.2s;background:#fdfcf9}
+.citem:hover{background:#fff;border-color:#cfccc2}
+.citem i{width:17px;height:17px;border-radius:5px;border:1.5px solid #c9c6bc;flex:0 0 auto;margin-top:3px;position:relative}
+.citem.done i{background:var(--ok);border-color:var(--ok)}
+.citem.done i::after{content:"";position:absolute;left:5px;top:1.5px;width:4px;height:9px;
+  border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.citem b{font-size:13px;font-weight:650;display:block;letter-spacing:-.01em}
+.citem span{font-size:11.8px;color:var(--ink3);display:block;margin-top:2px;line-height:1.5}
+
+/* ---------- stack ---------- */
+.stack{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:900px){.stack{grid-template-columns:repeat(2,1fr)}}
+.st{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:15px;box-shadow:var(--shadow)}
+.st b{font-size:12.5px;display:block}
+.st span{font-size:11.5px;color:var(--ink3);font-family:var(--mono);display:block;margin-top:5px;word-break:break-all}
+
+/* ---------- faq ---------- */
+.faq{display:grid;gap:10px}
+details{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:0;box-shadow:var(--shadow);overflow:hidden}
+summary{cursor:pointer;padding:16px 20px;font-size:14.5px;font-weight:650;letter-spacing:-.01em;list-style:none;
+  display:flex;justify-content:space-between;gap:14px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:19px;color:var(--ink3);font-weight:400;transition:.2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 20px 18px;font-size:13.5px;color:var(--ink2)}
+
+/* ---------- cta ---------- */
+.cta2{background:var(--ink);color:#fff;border-radius:22px;padding:44px;display:grid;
+  grid-template-columns:1.4fr 1fr;gap:34px;align-items:center}
+@media(max-width:800px){.cta2{grid-template-columns:1fr;padding:30px}}
+.cta2 h2{color:#fff}
+.cta2 p{color:#a9abb4;font-size:14px;margin-top:12px}
+.cbtn{display:inline-flex;align-items:center;gap:9px;background:#fff;color:var(--ink);font-weight:700;
+  padding:13px 22px;border-radius:11px;text-decoration:none;font-size:14px;justify-self:start;transition:.2s}
+.cbtn:hover{transform:translateY(-2px)}
+.cbtn.alt{background:transparent;color:#fff;border:1px solid #3a3c44}
+.mini{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+.mini div{background:rgba(255,255,255,.06);border:1px solid #2e3038;border-radius:10px;padding:10px 13px;font-size:12.5px;color:#d6d7dc}
+
+footer{border-top:1px solid var(--line);padding:34px 0;color:var(--ink3);font-size:12.5px}
+.footin{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.2,.8,.2,1),transform .65s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+}
+
+/* ---- 返回主站 ---- */
+.backhome{display:inline-flex;align-items:center;gap:8px;font-size:13px;text-decoration:none;
+  color:var(--ink-2,#5A6572);border:1px solid var(--line,#E3DED4);background:#fff;
+  border-radius:999px;padding:7px 15px;margin-bottom:26px;transition:.25s}
+.backhome span{font-size:11.5px;opacity:.6}
+.backhome:hover{border-color:var(--accent,#C2410C);color:var(--accent,#C2410C);transform:translateX(-3px)}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="navin">
+    <div class="brand"><span class="dot"></span>技能与资源库</div>
+    <div class="navlinks">
+      <a href="#skills">技能</a>
+      <a href="#flow">工作流</a>
+      <a href="#res">资源</a>
+      <a href="#check">清单</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">联系</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <a class="backhome" href="../">← 返回主站 <span>Ken Charles · 新产品开发经理</span></a>
+    <span class="kicker rv">可直接复用 · 开箱即用</span>
+    <h1 class="rv">把做过的<span class="dot" style="display:inline-block;width:14px;height:14px;box-shadow:0 0 0 6px var(--accent-soft);vertical-align:baseline"></span>
+      流程拆成<br><em>能抄的技能</em>和<em>能用的资源</em></h1>
+    <p class="sub rv">这里不放简历，放方法。趋势判断、成本前置、打样量产、渠道验证——每一条都配了可直接复制的模板与检查清单。
+      拿去别人的项目里也能跑通，才算真的分享出来。</p>
+    <div class="cta rv">
+      <a class="btn p" href="#res">↓ 拿模板</a>
+      <a class="btn" href="#skills">看技能矩阵</a>
+    </div>
+
+    <div class="heroviz">
+      <div class="tile rv"><div class="ic" style="background:#eaf0ff;color:#1a56db">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M3 17l6-6 4 4 7-7"/><path d="M14 8h6v6"/></svg></div>
+        <b>趋势判断</b><span>从BSR/新品榜反推需求空位</span><div class="bar"><i data-w="88%"></i></div></div>
+      <div class="tile rv"><div class="ic" style="background:#fff0e6;color:#c2410c">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3v18M5 8h14M5 16h14"/></svg></div>
+        <b>成本前置</b><span>BOM/模具/头程在打样前算清</span><div class="bar"><i data-w="92%"></i></div></div>
+      <div class="tile rv"><div class="ic" style="background:#e6f5f2;color:#0f766e">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 7L9 18l-5-5"/></svg></div>
+        <b>量产验证</b><span>公差/装配/包装逐项过</span><div class="bar"><i data-w="85%"></i></div></div>
+      <div class="tile rv"><div class="ic" style="background:#f4ecfb;color:#6b21a8">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 2l3 6 6 1-4.5 4.3L18 20l-6-3-6 3 1.5-6.7L3 9l6-1z"/></svg></div>
+        <b>渠道验证</b><span>AMZ / TK 上市节奏与复盘</span><div class="bar"><i data-w="90%"></i></div></div>
+    </div>
+  </div>
+</header>
+
+<!-- 技能 -->
+<section id="skills">
+  <div class="wrap">
+    <div class="shead rv">
+      <div class="snum">01 / SKILLS</div>
+      <div>
+        <h2>技能矩阵</h2>
+        <p class="sdesc">不是"我会什么"，是"我能独立把什么推到哪一步"。等级按可独立交付的程度标，不是按学过多久。</p>
+      </div>
+    </div>
+    <div class="skgrid">
+      <div class="sk rv">
+        <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a56db" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>市场数据挖掘</h3>
+        <p>ASIN 级销量与 BSR 趋势拆解，识别"类目里刚冒头、还没被压满"的新品窗口。定义新进入者按listing 维度，不按品牌。</p>
+        <div class="chips"><span class="chip k">BSR 趋势</span><span class="chip">ASIN 监控</span><span class="chip">关键词反查</span><span class="chip">评论挖需求</span></div>
+        <div class="lvl"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+      </div>
+      <div class="sk rv">
+        <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c2410c" stroke-width="2.2"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4M3 17l9 4 9-4"/></svg>成本与利润建模</h3>
+        <p>箱规尺寸实时取数，把采购、包装、头程、平台佣金、税一起算进单件净利，输出盈亏平衡销量和保本价。</p>
+        <div class="chips"><span class="chip k">BOM 拆解</span><span class="chip">箱规测算</span><span class="chip">盈亏平衡</span><span class="chip">多渠道比价</span></div>
+        <div class="lvl"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+      </div>
+      <div class="sk rv">
+        <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0f766e" stroke-width="2.2"><path d="M14 7l-5 5 5 5"/><path d="M4 4h16v16H4z"/></svg>工业设计落地</h3>
+        <p>结构可拆解、材质与公差可控、装配顺序不依赖师傅手艺。外观是最后一道，不是第一道。</p>
+        <div class="chips"><span class="chip k">结构拆解</span><span class="chip">公差控制</span><span class="chip">装配验证</span><span class="chip">专利规避</span></div>
+        <div class="lvl"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+      </div>
+      <div class="sk rv">
+        <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6b21a8" stroke-width="2.2"><path d="M3 7h18M3 12h18M3 17h18"/></svg>寻源与供应链</h3>
+        <p>从1688 定位工厂、谈报价、比模具与MOQ，把样品质量问题和量产风险提前到打样阶段暴露。</p>
+        <div class="chips"><span class="chip k">工厂定位</span><span class="chip">报价比价</span><span class="chip">MOQ 谈判</span><span class="chip">验厂清单</span></div>
+        <div class="lvl"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+      </div>
+      <div class="sk rv">
+        <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1a56db" stroke-width="2.2"><path d="M4 4h16v9H4z"/><path d="M8 20h8M12 13v7"/></svg>渠道运营与复盘</h3>
+        <p>Amazon 与 TikTok Shop（UK/DE）双渠道定价、Coupon 与达人节奏，按周复盘动销并回滚投入。</p>
+        <div class="chips"><span class="chip k">AMZ 运营</span><span class="chip">TK Shop</span><span class="chip">定价策略</span><span class="chip">周复盘</span></div>
+        <div class="lvl"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div>
+      </div>
+      <div class="sk rv">
+        <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#c2410c" stroke-width="2.2"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5L18 18M18 6l-2.5 2.5M8.5 15.5L6 18"/></svg>自动化工作流</h3>
+        <p>把重复动作脚本化：数据拉取、利润测算、报表汇总、素材提取。工具只是手段，产出可复用才留。</p>
+        <div class="chips"><span class="chip k">数据自动化</span><span class="chip">Excel 报表</span><span class="chip">Prompt 库</span><span class="chip">技能封装</span></div>
+        <div class="lvl"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 工作流 -->
+<section id="flow">
+  <div class="wrap">
+    <div class="shead rv">
+      <div class="snum">02 / WORKFLOW</div>
+      <div>
+        <h2>新品开发的六个关口</h2>
+        <p class="sdesc">每一关都有明确的「过不去就不能往下走」的判据。卡住就回上一关改，不要带着问题往前走。</p>
+      </div>
+    </div>
+    <div class="flow rv">
+      <div class="step"><u>STEP 01</u><b>趋势判断</b><p>近90 天新品ASIN 增速、评论里反复出现的抱怨，就是需求缺口。</p></div>
+      <div class="step"><u>STEP 02</u><b>产品定义</b><p>规格表定死核心参数与反参数（明确不做什么）。</p></div>
+      <div class="step"><u>STEP 03</u><b>成本前置</b><p>报价未出前先用行业区间算毛利能不能成立，成立才立项。</p></div>
+      <div class="step"><u>STEP 04</u><b>打样</b><p>结构、材质、公差、装配顺序四项一起验，不只看外观。</p></div>
+      <div class="step"><u>STEP 05</u><b>量产</b><p>产线走通、包装抗压测试、备件与说明书定稿。</p></div>
+      <div class="step"><u>STEP 06</u><b>上市验证</b><p>AMZ/TK 双渠道上架，按周看动销与盈亏，48小时定去留。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 资源 -->
+<section id="res">
+  <div class="wrap">
+    <div class="shead rv">
+      <div class="snum">03 / RESOURCES</div>
+      <div>
+        <h2>可直接复制的资源</h2>
+        <p class="sdesc">点右下角一键复制，粘到你的文档里就能用。都是日常真在跑的东西，不是示意。</p>
+      </div>
+    </div>
+    <div class="resgrid">
+      <div class="res rv">
+        <div class="resbody">
+          <h3>📐 利润测算 Prompt</h3>
+          <p>输入成本与箱规，输出多渠道分项利润与盈亏平衡点。强制要求尺寸数据来自实时查件，不许用本地参考值。</p>
+<pre><span class="c"># 角色</span>
+跨境产品利润分析师。
+<span class="c"># 输入</span>
+产品成本、箱规尺寸(实时查得)、目标售价。
+<span class="c"># 硬性要求</span>
+1. 尺寸/重量必须来自卖家精灵实时数据，
+   <span class="k">禁止</span>使用本地参考值
+2. 分渠道列出: 采购/包装/头程/佣金/税
+3. 输出单件净利、净利率、盈亏平衡销量
+4. 每一步给公式，不给结论</pre>
+        </div>
+        <div class="resfoot"><button class="copybtn" data-copy>复制</button><span class="tag">PROMPT</span></div>
+      </div>
+
+      <div class="res rv">
+        <div class="resbody">
+          <h3>🔍 趋势选品 Prompt</h3>
+          <p>用ASIN 级数据找类目空位：谁在涨、涨得有多陡、供给还没跟上。</p>
+<pre><span class="c"># 目标</span>
+从核心类目中筛出≥3 款趋势新品。
+<span class="c"># 方法</span>
+1. 取近两个窗口的 ASIN 级销量
+2. 新进入者定义(注意):
+   前窗口销量=0 <span class="k">且</span> 当前窗口有销量
+   = 按 <span class="v">listing</span> 维度, 不按品牌
+3. 输出: ASIN / 品类 / 增速 / 均价 / 卖家数
+4. 卖家数少 + 增速高 = 空位</pre>
+        </div>
+        <div class="resfoot"><button class="copybtn" data-copy>复制</button><span class="tag">PROMPT</span></div>
+      </div>
+
+      <div class="res rv">
+        <div class="resbody">
+          <h3>✅ 打样验收清单</h3>
+          <p>样品到手当天逐项过，任一项不过就退回重做，不进量产。</p>
+<pre>□ 结构：拆解后每个件都能独立拿取
+□ 公差：配合面间隙均匀，无强行塞入
+□ 材质：厚度/硬度与规格书一致
+□ 装配：不依赖师傅手感即可装好
+□ 功能：连续运行 30min无异常
+□ 外观：色差在可接受范围，批次一致
+□ 包装：抗压跌落测试通过</pre>
+        </div>
+        <div class="resfoot"><button class="copybtn" data-copy>复制</button><span class="tag">CHECKLIST</span></div>
+      </div>
+
+      <div class="res rv">
+        <div class="resbody">
+          <h3>🗂 数据分析口径</h3>
+          <p>几个容易算错的定义，先对齐再动手。</p>
+<pre><span class="c">新进入者</span> = 前窗口0 且 当前窗口有量(按ASIN)
+<span class="c">净利</span>   = 售价 − 采购 − 包装 − 头程
+              − 佣金 − 税
+<span class="c">盈亏平衡</span> = 固定投入 ÷ 单件净利
+<span class="c">销量估算</span> = 按目标价位档, <span class="k">不用</span>实际挂牌价
+<span class="c">注意</span>   = 低价是引流款, 不代表主推款</pre>
+        </div>
+        <div class="resfoot"><button class="copybtn" data-copy>复制</button><span class="tag">SPEC</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 检查清单 -->
+<section id="check">
+  <div class="wrap">
+    <div class="shead rv">
+      <div class="snum">04 / CHECKLIST</div>
+      <div>
+        <h2>项目体检表</h2>
+        <p class="sdesc">接手一个新品或新类目，先跑一遍这九项。哪项答不上来，就是最大的风险点。</p>
+      </div>
+    </div>
+    <div class="checks rv">
+      <h3>开品前必须回答的九个问题</h3>
+      <p>点击可勾选，用来对照当前项目进度。</p>
+      <div class="crow">
+        <div class="citem done"><i></i><div><b>需求缺口有数据支撑吗</b><span>近90 天ASIN 增速，不是我觉得</span></div></div>
+        <div class="citem done"><i></i><div><b>规格表定死了吗</b><span>含明确「不做什么」</span></div></div>
+        <div class="citem done"><i></i><div><b>毛利成立才立项吗</b><span>报价没出也要先算区间</span></div></div>
+        <div class="citem"><i></i><div><b>模具与 MOQ 谈了吗</b><span>含二次模具摊销</span></div></div>
+        <div class="citem"><i></i><div><b>箱规尺寸查实了吗</b><span>影响头程与FBA 分档</span></div></div>
+        <div class="citem"><i></i><div><b>打样验收过了吗</b><span>结构/公差/材质/装配</span></div></div>
+        <div class="citem"><i></i><div><b>包装通过抗压测试吗</b><span>跌落 + 堆码</span></div></div>
+        <div class="citem"><i></i><div><b>双渠道定价定了吗</b><span>AMZ 与 TK 分别算</span></div></div>
+        <div class="citem"><i></i><div><b>48小时去留规则写了吗</b><span>上架前就定，不是上架后吵</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 工具栈 -->
+<section id="stack">
+  <div class="wrap">
+    <div class="shead rv">
+      <div class="snum">05 / STACK</div>
+      <div>
+        <h2>在用的工具</h2>
+        <p class="sdesc">工具会换，方法不会。这套是我目前跑得最顺的一套。</p>
+      </div>
+    </div>
+    <div class="stack rv">
+      <div class="st"><b>数据与选品</b><span>卖家精灵MCP / 领星ERP</span></div>
+      <div class="st"><b>利润测算</b><span>成本 + 箱规 → 分渠道利润</span></div>
+      <div class="st"><b>寻源</b><span>1688 工厂对接 / 报价比价</span></div>
+      <div class="st"><b>报表</b><span>Excel 汇总 / 周复盘模板</span></div>
+      <div class="st"><b>渠道</b><span>Amazon UK·DE·US</span></div>
+      <div class="st"><b>渠道</b><span>TikTok Shop UK·DE</span></div>
+      <div class="st"><b>自动化</b><span>WorkBuddy 技能封装</span></div>
+      <div class="st"><b>分析口径</b><span>ASIN 维度 / 全部可追溯</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="shead rv">
+      <div class="snum">06 / FAQ</div>
+      <div><h2>常见问题</h2></div>
+    </div>
+    <div class="faq rv">
+      <details open><summary>这些资源可以直接用在你自己的项目上吗？</summary>
+        <p>可以。都是纯文本模板，粘走就能用。唯一要求：尺寸重量这类数据请自己去查实时值，我这里给的是方法和口径，不是缓存数字。</p></details>
+      <details><summary>为什么不放具体项目的敏感数据？</summary>
+        <p>利润表、供应商报价、销量明细属于原东家数据。分享的是判断逻辑和表格结构，具体数字请用你自己的项目重跑。</p></details>
+      <details><summary>「外观是最后一道」是什么意思？</summary>
+        <p>意思是先确认能量产，再谈好不好看。画得出来但装不进去、公差控不住、模具做不了的工业设计，对产品没有价值。工业设计背景让我习惯从可制造性倒推造型。</p></details>
+      <details><summary>新进入者为什么按 ASIN 算不按品牌？</summary>
+        <p>因为趋势机会藏在具体listing 上。一个老品牌新推一个ASIN，和一个从零起来的新品牌，在数据上长得完全不一样。按品牌算会把最有意思的信号抹掉。</p></details>
+      <details><summary>技能站和求职站有什么区别？</summary>
+        <p>求职站讲的是「我是谁、做成过什么」，用叙事和案例。这站讲的是「怎么做的」，可以直接抄走。如果你在面试里被追问方法细节，看这站。</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact">
+  <div class="wrap">
+    <div class="cta2 rv">
+      <div>
+        <h2>想聊具体的品类？</h2>
+        <p>我更愿意聊具体的品、具体的数据和具体的坑，而不是泛泛的方法论。手上正在看的方向：家电、工具五金、花园户外、水上泳池。宠物类也能做，但需要从零补。</p>
+      </div>
+      <div class="mini">
+        <div>🇬🇧 Amazon UK</div>
+        <div>🇩🇪 Amazon DE</div>
+        <div>🇬🇧 TikTok Shop UK</div>
+        <div>🇩🇪 TikTok Shop DE</div>
+        <div>🇺🇸 Amazon US</div>
+        <div>📩 欢迎邮件</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footin">
+    <span>技能与资源库 · 新产品开发</span>
+    <span>方法可抄，数据请自查</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // reveal
+  var els=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+      });
+    },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(el){io.observe(el);});
+  }else{
+    els.forEach(function(el){el.classList.add('in');});
+  }
+
+  // bars
+  var bars=document.querySelectorAll('.bar i');
+  function grow(){
+    bars.forEach(function(b){
+      var r=b.getBoundingClientRect();
+      if(r.top<window.innerHeight*0.92) b.style.width=b.getAttribute('data-w');
+    });
+  }
+  if('IntersectionObserver' in window){
+    var io2=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ grow(); io2.disconnect(); } });
+    },{threshold:.2});
+    if(bars[0]) io2.observe(bars[0].closest('.heroviz'));
+  }
+  window.addEventListener('scroll',grow,{passive:true});
+  grow();
+
+  // copy
+  document.querySelectorAll('[data-copy]').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var pre=btn.closest('.res').querySelector('pre');
+      var txt=pre.innerText;
+      var done=function(){
+        btn.textContent='已复制'; btn.classList.add('ok');
+        setTimeout(function(){btn.textContent='复制';btn.classList.remove('ok');},1600);
+      };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(txt).then(done).catch(fallback);
+      }else fallback();
+      function fallback(){
+        var ta=document.createElement('textarea');
+        ta.value=txt; ta.style.position='fixed'; ta.style.opacity='0';
+        document.body.appendChild(ta); ta.select();
+        try{document.execCommand('copy');done();}catch(e){btn.textContent='复制失败';}
+        document.body.removeChild(ta);
+      }
+    });
+  });
+
+  // checklist toggle
+  document.querySelectorAll('.citem').forEach(function(it){
+    it.style.cursor='pointer';
+    it.addEventListener('click',function(){ it.classList.toggle('done'); });
+  });
+
+  // nav active
+  var links=document.querySelectorAll('.navlinks a');
+  var secs=document.querySelectorAll('section[id]');
+  window.addEventListener('scroll',function(){
+    var y=window.scrollY+120, cur='';
+    secs.forEach(function(s){ if(s.offsetTop<=y) cur=s.id; });
+    links.forEach(function(a){
+      a.style.color = a.getAttribute('href')==='#'+cur ? 'var(--ink)' : '';
+      a.style.background = a.getAttribute('href')==='#'+cur ? 'var(--paper)' : '';
+    });
+  },{passive:true});
+})();
+</script>
+</body>
+</html>
