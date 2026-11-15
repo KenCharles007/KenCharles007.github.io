@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>刘彦刚 · 履历 · 新产品开发经理</title>
+<style>
+:root{--bg:#0d1016;--card:#151a23;--card2:#1b222e;--line:#2a3342;--tx:#e8edf5;--tx2:#a9b6c8;--tx3:#78879b;--acc:#3ddc97;--warn:#ff8a65;--blue:#6ba6ff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.75 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--acc);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 76px}
+code{font-family:ui-monospace,Consolas,monospace;font-size:.9em;color:var(--blue);background:#131b26;padding:1px 5px;border-radius:4px}
+
+/* 导航 */
+.nav{position:sticky;top:0;z-index:9;background:rgba(13,16,22,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .in{max-width:1080px;margin:0 auto;padding:13px 24px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{font-weight:700;font-size:15px;color:var(--tx);letter-spacing:.3px}
+.brand b{color:var(--acc)}
+.nav .lk{display:flex;gap:20px;font-size:13px;flex-wrap:wrap}
+.nav .lk a{color:var(--tx2)}
+.nav .lk a.on{color:var(--acc);font-weight:600}
+.slim{border-bottom:1px solid var(--line);background:rgba(13,16,22,.94)}
+.slim .in{max-width:1080px;margin:0 auto;padding:13px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.slim .hint{font-size:11.5px;color:var(--tx3)}
+
+/* Hero */
+.hero{padding:70px 0 46px;border-bottom:1px solid var(--line)}
+.eyebrow{font-family:ui-monospace,Consolas,monospace;font-weight:600;font-size:10.5px;letter-spacing:2.2px;color:var(--acc);margin:0 0 18px;text-transform:uppercase}
+h1{font-size:clamp(29px,4.3vw,45px);line-height:1.24;margin:0 0 18px;letter-spacing:-.6px;font-weight:700}
+h1 em{font-style:normal;color:var(--acc)}
+.lede{font-size:15.5px;color:var(--tx2);max-width:660px;margin:0 0 6px}
+.lede b{color:var(--tx)}
+.quote{border-left:2px solid var(--acc);padding:2px 0 2px 16px;margin:26px 0 0;font-size:14.5px;color:var(--tx);max-width:620px}
+.quote small{display:block;color:var(--tx3);font-size:11.5px;margin-top:7px}
+.cta{display:flex;gap:10px;flex-wrap:wrap;margin:26px 0 0}
+.btn{display:inline-block;padding:9px 18px;border-radius:8px;font-size:13.5px;font-weight:600;border:1px solid var(--line);color:var(--tx);background:var(--card)}
+.btn:hover{text-decoration:none;border-color:var(--acc)}
+.btn.p{background:var(--acc);color:#07231a;border-color:var(--acc)}
+.btn.p:hover{filter:brightness(1.08)}
+
+/* KPI */
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:30px 0 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.kpi .n{font-weight:700;font-size:26px;line-height:1.1;color:var(--acc);font-variant-numeric:tabular-nums;letter-spacing:-.5px}
+.kpi .n small{font-size:11.5px;font-weight:400;color:var(--tx3);margin-left:3px}
+.kpi .l{font-size:12.5px;color:var(--tx2);margin-top:6px}
+.kpi .d{font-size:10.5px;color:var(--tx3);margin-top:3px;line-height:1.6}
+
+/* 章节 */
+section{padding:54px 0 0}
+h2{font-size:22px;margin:0 0 8px;letter-spacing:-.3px;font-weight:700}
+h2 .en{display:block;font:600 10px/1 ui-monospace,Consolas,monospace;letter-spacing:2.2px;color:var(--tx3);margin-bottom:9px}
+.sub{color:var(--tx2);font-size:13.5px;margin:0 0 22px;max-width:730px}
+h3{font-size:15px;margin:0 0 8px;font-weight:600}
+h4{font-size:12.5px;margin:16px 0 6px;color:var(--tx3);font-weight:600;letter-spacing:.3px}
+
+/* 网格与卡 */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+.card p{margin:0;color:var(--tx2);font-size:12.8px;line-height:1.8}
+.card .k{font-size:10.5px;color:var(--tx3);letter-spacing:1.6px;font-family:ui-monospace,Consolas,monospace;margin:0 0 8px}
+.card ul{margin:6px 0 0;padding-left:17px;color:var(--tx2);font-size:12.8px;line-height:1.8}
+.card li{margin:2px 0}
+
+/* 时间轴 */
+.tl{position:relative;margin:10px 0 0;padding-left:24px}
+.tl:before{content:"";position:absolute;left:5px;top:8px;bottom:8px;width:1px;background:var(--line)}
+.tl .it{position:relative;padding:0 0 24px}
+.tl .it:last-child{padding-bottom:0}
+.tl .it:before{content:"";position:absolute;left:-23px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--card2);border:2px solid var(--tx3)}
+.tl .it.now:before{background:var(--warn);border-color:var(--warn)}
+.tl .it.gap:before{background:transparent;border-style:dashed}
+.tl .yr{font-family:ui-monospace,Consolas,monospace;font-weight:600;font-size:11.5px;color:var(--tx3);letter-spacing:.4px}
+.tl .co{font-size:15.5px;font-weight:600;margin:5px 0 2px}
+.tl .ro{font-size:12.5px;color:var(--tx2)}
+.tl .ds{font-size:12.5px;color:var(--tx3);margin:6px 0 0;max-width:660px;line-height:1.8}
+
+/* 条形图 */
+.bars{margin:8px 0 0}
+.bar{display:flex;align-items:center;gap:10px;margin:0 0 8px;font-size:12.5px}
+.bar .lb{width:104px;color:var(--tx2);flex:none;line-height:1.5}
+.bar .tk{flex:1;height:8px;background:var(--card2);border-radius:4px;overflow:hidden}
+.bar .fl{display:block;height:100%;background:var(--acc);border-radius:4px}
+.bar .fl.dim{background:#2f4a3f}
+.bar .v{width:86px;text-align:right;color:var(--tx3);font-variant-numeric:tabular-nums;flex:none;font-size:11.5px}
+
+/* 表格 */
+table{width:100%;border-collapse:collapse;font-size:12.8px;background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+th,td{padding:10px 13px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--card2);color:var(--tx3);font-size:11px;font-weight:600;letter-spacing:.3px}
+tr:last-child td{border-bottom:none}
+td strong{color:var(--tx)}
+
+/* 标签 */
+.tag{display:inline-block;font-size:10.5px;padding:2px 7px;border-radius:4px;background:var(--card2);color:var(--tx3);border:1px solid var(--line);margin:0 4px 4px 0;white-space:nowrap}
+.tag.ok{color:var(--acc);border-color:#2b5a45;background:#12251e}
+.tag.warn{color:var(--warn);border-color:#5a3a2b;background:#1d1512}
+.tag.blue{color:var(--blue);border-color:#2b3f5a;background:#121a25}
+.tag.vio{color:#a78bfa;border-color:#3d3159;background:#191527}
+
+/* 卡点框 */
+.risk{background:#1d1512;border:1px solid #5a3a2b;border-radius:10px;padding:16px 18px;margin:16px 0 0}
+.risk .h{color:var(--warn);font-weight:700;font-size:13px;margin:0 0 8px}
+.risk ul{margin:0;padding-left:17px;color:var(--tx2);font-size:12.5px;line-height:1.85}
+.risk li{margin:3px 0}
+.note{background:var(--card);border:1px solid var(--line);border-left:2px solid var(--tx3);border-radius:8px;padding:13px 16px;color:var(--tx3);font-size:12px;line-height:1.85;margin:16px 0 0}
+.note b{color:var(--tx2)}
+
+/* 图位 */
+.ph{border:1px dashed var(--line);border-radius:8px;background:repeating-linear-gradient(135deg,#141922 0 10px,#111620 10px 20px);min-height:140px;display:flex;align-items:center;justify-content:center;color:var(--tx3);font-size:11px;text-align:center;padding:16px;line-height:1.8}
+.phs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:14px 0 0}
+
+/* 项目块 */
+.proj{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:24px 26px;margin:0 0 18px}
+.proj .top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:4px}
+.proj .cat{font:600 10px/1 ui-monospace,Consolas,monospace;letter-spacing:1.8px;color:var(--acc);margin:0 0 10px}
+.proj h3{font-size:19px;margin:0 0 4px;letter-spacing:-.2px}
+.proj .one{color:var(--tx2);font-size:13.5px;margin:0 0 16px}
+.mine{display:flex;gap:10px;align-items:baseline;font-size:12.5px;color:var(--tx2);border-top:1px solid var(--line);padding-top:14px;margin-bottom:14px}
+.mine b{color:var(--acc);font-weight:600;flex:none}
+.steps{margin:0}
+.steps .s{display:flex;gap:12px;padding:9px 0;border-top:1px solid #1f2734;font-size:12.8px}
+.steps .s:first-child{border-top:none}
+.steps .n{font-family:ui-monospace,Consolas,monospace;font-size:10.5px;color:var(--tx3);flex:none;padding-top:2px;width:18px}
+.steps .t{color:var(--tx2);line-height:1.8}
+.steps .t b{color:var(--tx)}
+
+/* 页脚 */
+footer{margin-top:58px;padding-top:22px;border-top:1px solid var(--line);color:var(--tx3);font-size:11.8px;line-height:1.9}
+footer .fl{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:10px;font-size:12.5px}
+footer .fl a{color:var(--tx2)}
+footer .fl a:hover{color:var(--acc)}
+footer .fine{max-width:760px}
+
+@media(max-width:860px){
+ .g4,.g3{grid-template-columns:1fr 1fr}
+ .g2{grid-template-columns:1fr}
+ .kpis{grid-template-columns:1fr 1fr}
+ .phs{grid-template-columns:1fr 1fr}
+ .nav .lk{gap:14px;font-size:12px}
+}
+@media(max-width:560px){
+ .g4,.g3,.kpis,.phs{grid-template-columns:1fr}
+ .hero{padding:44px 0 34px}
+ html,body{max-width:100%;overflow-x:hidden}
+ .wrap{padding:0 16px 60px}
+ .nav .in{padding:10px 16px;flex-wrap:wrap;gap:6px}
+ .nav .lk{gap:12px;font-size:11.5px;width:100%;justify-content:space-between}
+ .slim .in{padding:10px 16px;gap:10px}
+ .slim .hint{font-size:10.5px;text-align:right}
+ .proj{padding:18px 18px}
+ .mine{flex-wrap:wrap;gap:6px}
+ .btn{padding:8px 14px;font-size:12.5px}
+ .card{padding:16px 16px}
+ table{font-size:12px}
+ th,td{padding:8px 9px}
+}
+@media print{
+ body{background:#fff;color:#111}
+ .nav,.slim{position:static;background:#fff}
+ .card,.kpi,.proj,table{background:#fff;border-color:#ccc}
+ .ph{border-color:#ccc;background:#fafafa}
+ a{color:#0a5}
+}
+</style>
+</head>
+<body>
+<div class="slim"><div class="in"><a class="brand" href="../index.html">Ken <b>Charles</b></a><span class="hint">履历与项目经验</span></div></div><div class="wrap">
+<section class="hero" style="padding:52px 0 30px;border-bottom:none">
+<p class="eyebrow">Resume · 履历</p>
+<h1 style="font-size:34px;margin-bottom:10px">刘彦刚 <span style="color:var(--tx3);font-size:15px;font-weight:400;letter-spacing:0">Ken Charles</span></h1>
+<p class="lede"><b>新产品开发经理</b> · New Product Development Manager<br>
+深圳　｜　在职，看看新机会　｜　13153378425　｜　13153378425@163.com</p>
+<p class="quote">工业设计底子 + 跨境数据敏感度：能定义产品，也能把它推到货架上。<small>7 年半 —— 3.9 年工业设计与结构，3.3 年跨境产品</small></p>
+</section>
+
+<div class="kpis" style="grid-template-columns:repeat(4,1fr)">
+<div class="kpi"><div class="n">7.5<small>年</small></div><div class="l">产品与设计经验</div><div class="d">设计 3.9 + 跨境 3.3</div></div>
+<div class="kpi"><div class="n">146<small>个</small></div><div class="l">在售 SKU</div><div class="d">自建 HH 线 56 个</div></div>
+<div class="kpi"><div class="n">$816<small>万</small></div><div class="l">Amazon 单年销售额</div><div class="d">≈ 5,800 万元</div></div>
+<div class="kpi"><div class="n">19.7<small>万件</small></div><div class="l">单年销量</div><div class="d">197,354 件</div></div>
+</div>
+
+<section>
+<h2><span class="en">EXPERIENCE</span>工作经历</h2>
+<p class="sub">五段，时间倒序。</p>
+<div class="card" style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:flex-start"><div><h3 style="margin:0;font-size:16px">深圳市海思拓普科技有限公司</h3><p style="color:var(--tx3);font-size:12px;margin:3px 0 0">产品经理 · 品牌方 / 甲方 PM</p></div><span class="tag ok">2025.11 – 至今</span> <span class="tag warn">在职</span></div><p style="margin:11px 0 0;color:var(--tx3);font-size:12.3px">清洁、户外、工具、大健康四条类目线；PRD 体系与 AI 流程搭建。</p><ul style="margin:9px 0 0;padding-left:18px;color:var(--tx2);font-size:12.8px;line-height:1.85"><li>负责清洁、户外、工具、大健康类目的产品开发与新市场拓展</li><li>负责 146 个在售 SKU 的业绩管理：Amazon 单年销售 $816 万（约 5,800 万元）、19.7 万件</li><li>自建 HH 产品线 56 个 SKU，产品卖到公司五个运营部门；按摩健康线 37 个 SKU 单年 $300 万、占总额 36.8%</li><li>主导同源 PRD 模板体系（13–16 sheet），跨品类复用同一套定义结构</li><li>搭建公司 AI 流程并做全员培训，推动数字化</li></ul></div><div class="card" style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:flex-start"><div><h3 style="margin:0;font-size:16px">行云集团（深圳市天行云供应链有限公司）</h3><p style="color:var(--tx3);font-size:12px;margin:3px 0 0">产品经理</p></div><span class="tag ok">2024.09 – 2025.09</span></div><p style="margin:11px 0 0;color:var(--tx3);font-size:12.3px">AMZ 家用电器、环境电器与两季产品；在管 14 个项目。</p><ul style="margin:9px 0 0;padding-left:18px;color:var(--tx2);font-size:12.8px;line-height:1.85"><li>六步全链路：项目立项 → 产品开发 → 确认样品 → 推进进度 → 品质管理 → 营销推广</li><li>空气炸锅：品类 top5，日销 700+，年销 3,000 万</li><li>空气循环扇：小类 top3，客单 500 元，日销 200+，年销 1,000 万</li><li>高速吹风机：小类前 20，年销 1,000 万</li></ul></div><div class="card" style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:flex-start"><div><h3 style="margin:0;font-size:16px">深圳市一品时代科技有限公司</h3><p style="color:var(--tx3);font-size:12px;margin:3px 0 0">硬件产品经理（B 端 / Amazon）</p></div><span class="tag ok">2023.05 – 2024.07</span></div><p style="margin:11px 0 0;color:var(--tx3);font-size:12.3px">工厂端 / 乙方视角：前期规划、竞品分析、PRD、外观结构评审、模具推进、试产量产问题。</p><ul style="margin:9px 0 0;padding-left:18px;color:var(--tx2);font-size:12.8px;line-height:1.85"><li>除湿机（干衣款）：外观与功能优化，业务线销售额 +30%，B 端年销 3 万台+</li><li>加湿除湿一体机：拆机自研，客单 $35，B 端年销 2 万台+</li><li>落地式冷风扇：填补公司大件产品空白，客单 $50，B 端年销 1 万台+</li><li>负责新员工培训，回复大客户技术问题，协助 Amazon 端宣发</li></ul></div><div class="card" style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:flex-start"><div><h3 style="margin:0;font-size:16px">北京物道科技有限公司</h3><p style="color:var(--tx3);font-size:12px;margin:3px 0 0">工业设计师 / 产品设计师</p></div><span class="tag ok">2021.01 – 2023.02</span></div><p style="margin:11px 0 0;color:var(--tx3);font-size:12.3px">ID + 结构：客户产品外观与结构设计、内部评审、客户提案、供应商进度。</p><ul style="margin:9px 0 0;padding-left:18px;color:var(--tx2);font-size:12.8px;line-height:1.85"><li>推进近百余项产品落地实施；完成客户产品系列化改造</li><li>新华医疗 AGV 项目：外壳结构修改、供应商与客户对接、方案验收</li><li>医疗设备、工程机械、消费电子多线的外观与结构输出</li></ul></div><div class="card" style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:flex-start"><div><h3 style="margin:0;font-size:16px">山东朗云工业设计有限公司</h3><p style="color:var(--tx3);font-size:12px;margin:3px 0 0">工业设计师 / 产品设计师</p></div><span class="tag ok">2019.05 – 2020.10</span></div><p style="margin:11px 0 0;color:var(--tx3);font-size:12.3px">医疗设备与厨电外观设计，兼简单结构工作。</p><ul style="margin:9px 0 0;padding-left:18px;color:var(--tx2);font-size:12.8px;line-height:1.85"><li>完成近百余项产品外观设计，覆盖医疗、消费电子、工程机械</li><li>负责项目调研、竞品分析与用户画像</li><li>推进公司组织设计培训、主办设计大赛</li></ul></div>
+</section>
+
+<section>
+<h2><span class="en">PROJECTS</span>项目经验</h2>
+<p class="sub">三个卖得好的项目：一条自建产品线、一个新品类、一个品类 Top5 业务。</p>
+<div class="card" style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><h3 style="margin:0;font-size:15px">按摩健康产品线（自建）</h3><span class="tag">海思拓普 · 2025.11 – 至今 · 产品经理</span></div><ul style="margin:9px 0 0;padding-left:18px;color:var(--tx2);font-size:12.8px;line-height:1.85"><li>红海类目从 0 建线：37 个 SKU 铺满价位与佩戴部位（手部 / 腰部 / 膝部 / 筋膜枪 / 床垫），Amazon 单年销售额 $300.7 万，占负责盘 36.8%</li><li>手部按摩器单款年销 $81.1 万 / 12,396 件，为 146 个在售 SKU 中的第一名；Top10 单品中按摩线占 4 席</li><li>五合一按摩床垫完成 CE-LVD / UL1647 / RoHS / EN55014 全套认证，TikTok Shop 德国站首批 150 台售罄</li></ul></div><div class="card" style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><h3 style="margin:0;font-size:15px">AI 打印相机（儿童）</h3><span class="tag">海思拓普 · 2025.11 – 至今 · 产品经理</span></div><ul style="margin:9px 0 0;padding-left:18px;color:var(--tx2);font-size:12.8px;line-height:1.85"><li>从品类调研、产品定义到上架动销全程负责：拍立得形态 + 热敏无墨打印，主打「照片马上拿到手」的体验</li><li>主打款 Amazon 单年销售额 $27.8 万，居 146 个在售 SKU 第 6 名；儿童玩具线合计 $31.9 万</li><li>按评论星级归因锁定价格带与差评集中点，据此定形态、CMF 与定价</li></ul></div><div class="card" style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><h3 style="margin:0;font-size:15px">空气炸锅</h3><span class="tag">行云集团 · 2024.09 – 2025.09 · 产品经理</span></div><ul style="margin:9px 0 0;padding-left:18px;color:var(--tx2);font-size:12.8px;line-height:1.85"><li>成熟品类多品线布局，六步全链路推进：立项 → 开发（规避侵权、敲定款式、输出 PRD）→ 样品对比与审厂 → 大货交期 → 品质标准 → 推广动销</li><li>品类排名 Top5，日销 700+，年销售额 3,000 万</li><li>同期空气循环扇小类 Top3、年销 1,000 万；高速吹风机小类前 20、年销 1,000 万</li></ul></div>
+</section>
+
+<section>
+<h2><span class="en">TOP SKU</span>代表性单品（Amazon 单年）</h2>
+<table>
+<tr><th style="width:8%">#</th><th style="width:22%">SKU</th><th>产品</th><th style="width:20%;text-align:right">销售额</th></tr>
+<tr><td>1</td><td><code>HHEM1006D</code></td><td>高配白色手部按摩器</td><td style="text-align:right">$811,495</td></tr><tr><td>2</td><td><code>HACS1308P</code></td><td>竹藤灯笼 2 个装（太阳能）</td><td style="text-align:right">$476,117</td></tr><tr><td>3</td><td><code>HHEM1013D</code></td><td>腰部气囊按摩</td><td style="text-align:right">$356,124</td></tr><tr><td>4</td><td><code>HHEM2001D</code></td><td>三合一弯头智能筋膜枪</td><td style="text-align:right">$340,499</td></tr><tr><td>5</td><td><code>HKCV1001D</code></td><td>车载手持枪式吸尘器</td><td style="text-align:right">$313,703</td></tr><tr><td>6</td><td><code>TGKC1001D</code></td><td>P04 儿童拍立得相机</td><td style="text-align:right">$278,494</td></tr>
+</table>
+<p class="sub" style="margin-top:12px;font-size:11.5px">146 个在售 SKU 的完整明细可现场调取原始记录。</p>
+</section>
+
+<section>
+<h2><span class="en">EDUCATION</span>教育 · 证书 · 语言</h2>
+<div class="g2">
+<div class="card"><p class="k">EDUCATION</p><h3>山东理工大学 · 工业设计</h3><p>本科　2015.09 – 2019.06</p></div>
+<div class="card"><p class="k">CERTIFICATES</p><h3>NPDP · PMP · 注册质量工程师 · 铣工高级技师</h3><p>产品经理国际资格 · 项目管理 · 质量 · 机加工</p></div>
+</div>
+<div class="card" style="margin-top:12px"><p class="k">LANGUAGE</p><h3>英语 · 工作应用</h3><p>能读英文规格书、认证标准与平台规则；会议口语在持续练。</p></div>
+</section>
+
+<div class="note"><b>需要打印版</b>：Ctrl+P → 另存为 PDF（A4、勾选背景图形）。</div>
+<footer><div class="fl"><a href="../index.html">完整站点</a><a href="../portfolio/index.html">作品集</a><a href="../skills/index.html">方法与技能</a><a href="../journey/index.html">成长历程</a></div><p class="fine">刘彦刚 · Ken Charles ｜ 新产品开发经理 ｜ 深圳 ｜ 13153378425 ｜ 13153378425@163.com<br>销售数据口径：Amazon 平台，2025.11 – 2026.10，按 SKU 统计。</p></footer></div>
+</body>
+</html>
